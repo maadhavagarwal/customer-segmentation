@@ -1,0 +1,44 @@
+{
+    "shape": [
+        541909,
+        8
+    ],
+    "columns": [
+        "InvoiceNo",
+        "StockCode",
+        "Description",
+        "Quantity",
+        "InvoiceDate",
+        "UnitPrice",
+        "CustomerID",
+        "Country"
+    ],
+    "dtypes": {
+        "InvoiceNo": "object",
+        "StockCode": "object",
+        "Description": "object",
+        "Quantity": "int64",
+        "InvoiceDate": "datetime64[us]",
+        "UnitPrice": "float64",
+        "CustomerID": "float64",
+        "Country": "str"
+    },
+    "missing_values": {
+        "InvoiceNo": 0,
+        "StockCode": 0,
+        "Description": 1454,
+        "Quantity": 0,
+        "InvoiceDate": 0,
+        "UnitPrice": 0,
+        "CustomerID": 135080,
+        "Country": 0
+    },
+    "num_duplicates": 5268,
+    "cancelled_transactions": 9288,
+    "date_range": [
+        "2010-12-01 08:26:00",
+        "2011-12-09 12:50:00"
+    ],
+    "num_customers": 4372,
+    "num_transactions": 25900
+}
