@@ -1,0 +1,14 @@
+{
+    "model": "KMeans",
+    "algorithm_type": "Unsupervised Learning",
+    "selected_k": 4,
+    "features": [
+        "Recency",
+        "Frequency",
+        "Monetary"
+    ],
+    "transformation": "log1p",
+    "scaling": "StandardScaler",
+    "random_state": 42,
+    "n_init": 20
+}

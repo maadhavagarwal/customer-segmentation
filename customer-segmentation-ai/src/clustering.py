@@ -4,6 +4,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 import joblib
+import json
 import os
 
 def preprocess_for_clustering(rfm_df, features=['Recency', 'Frequency', 'Monetary']):
@@ -49,7 +50,7 @@ def find_optimal_k(X_scaled_df, max_k=10):
         
     return wcss, silhouette_scores
 
-def train_final_model(rfm_df, X_scaled_df, k, scaler, output_dir='../outputs'):
+def train_final_model(rfm_df, X_scaled_df, k, scaler, model_dir='../models'):
     """
     Trains the final K-Means model with the selected optimal K.
     Assigns the cluster labels to the original dataframe.
@@ -62,32 +63,28 @@ def train_final_model(rfm_df, X_scaled_df, k, scaler, output_dir='../outputs'):
     # Assign clusters
     rfm_df['Cluster'] = kmeans.labels_
     
-    # Save the model and scaler
-    os.makedirs(output_dir, exist_ok=True)
-    joblib.dump(kmeans, os.path.join(output_dir, 'kmeans_model.pkl'))
-    joblib.dump(scaler, os.path.join(output_dir, 'scaler.pkl'))
+    # Save the model, scaler, and metadata
+    os.makedirs(model_dir, exist_ok=True)
+    joblib.dump(kmeans, os.path.join(model_dir, 'kmeans_model.pkl'))
+    joblib.dump(scaler, os.path.join(model_dir, 'scaler.pkl'))
+    
+    metadata = {
+        "model": "KMeans",
+        "algorithm_type": "Unsupervised Learning",
+        "selected_k": k,
+        "features": ["Recency", "Frequency", "Monetary"],
+        "transformation": "log1p",
+        "scaling": "StandardScaler",
+        "random_state": 42,
+        "n_init": 20
+    }
+    with open(os.path.join(model_dir, 'model_metadata.json'), 'w') as f:
+        json.dump(metadata, f, indent=4)
     
     print("Model trained and saved successfully.")
     return rfm_df, kmeans
 
-def predict_customer_segment(recency, frequency, monetary, model_path='../outputs/kmeans_model.pkl', scaler_path='../outputs/scaler.pkl'):
-    """
-    Predicts the cluster for a new customer based on their R, F, M values.
-    Applies the same log transformation and scaling as training.
-    """
-    kmeans = joblib.load(model_path)
-    scaler = joblib.load(scaler_path)
-    
-    # Create input array
-    input_data = np.array([[recency, frequency, monetary]])
-    
-    # Transform and scale
-    input_log = np.log1p(input_data)
-    input_scaled = scaler.transform(input_log)
-    
-    # Predict
-    cluster = kmeans.predict(input_scaled)[0]
-    return cluster
+    pass
 
 if __name__ == "__main__":
     pass

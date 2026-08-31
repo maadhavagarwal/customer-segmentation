@@ -1,0 +1,130 @@
+{
+    "Champions": [
+        {
+            "Description": "PAPER CRAFT , LITTLE BIRDIE",
+            "TotalQuantity": 80995,
+            "TotalRevenue": 168469.6,
+            "BuyersCount": 1
+        },
+        {
+            "Description": "REGENCY CAKESTAND 3 TIER",
+            "TotalQuantity": 9287,
+            "TotalRevenue": 105245.4,
+            "BuyersCount": 262
+        },
+        {
+            "Description": "WHITE HANGING HEART T-LIGHT HOLDER",
+            "TotalQuantity": 23320,
+            "TotalRevenue": 64146.9,
+            "BuyersCount": 251
+        },
+        {
+            "Description": "JUMBO BAG RED RETROSPOT",
+            "TotalQuantity": 34125,
+            "TotalRevenue": 62281.56,
+            "BuyersCount": 251
+        },
+        {
+            "Description": "RABBIT NIGHT LIGHT",
+            "TotalQuantity": 23500,
+            "TotalRevenue": 44239.67,
+            "BuyersCount": 196
+        }
+    ],
+    "At-Risk Customers": [
+        {
+            "Description": "MEDIUM CERAMIC TOP STORAGE JAR",
+            "TotalQuantity": 74898,
+            "TotalRevenue": 77997.03,
+            "BuyersCount": 51
+        },
+        {
+            "Description": "PICNIC BASKET WICKER 60 PIECES",
+            "TotalQuantity": 61,
+            "TotalRevenue": 39619.5,
+            "BuyersCount": 1
+        },
+        {
+            "Description": "WHITE HANGING HEART T-LIGHT HOLDER",
+            "TotalQuantity": 9742,
+            "TotalRevenue": 26124.2,
+            "BuyersCount": 306
+        },
+        {
+            "Description": "REGENCY CAKESTAND 3 TIER",
+            "TotalQuantity": 2104,
+            "TotalRevenue": 25112.5,
+            "BuyersCount": 328
+        },
+        {
+            "Description": "POSTAGE",
+            "TotalQuantity": 921,
+            "TotalRevenue": 23051.39,
+            "BuyersCount": 105
+        }
+    ],
+    "Lost Customers": [
+        {
+            "Description": "REGENCY CAKESTAND 3 TIER",
+            "TotalQuantity": 624,
+            "TotalRevenue": 7545.599999999999,
+            "BuyersCount": 179
+        },
+        {
+            "Description": "WHITE HANGING HEART T-LIGHT HOLDER",
+            "TotalQuantity": 2494,
+            "TotalRevenue": 6920.5,
+            "BuyersCount": 199
+        },
+        {
+            "Description": "POSTAGE",
+            "TotalQuantity": 229,
+            "TotalRevenue": 5615.9,
+            "BuyersCount": 89
+        },
+        {
+            "Description": "PARTY BUNTING",
+            "TotalQuantity": 1202,
+            "TotalRevenue": 5592.8,
+            "BuyersCount": 148
+        },
+        {
+            "Description": "JUMBO BAG RED RETROSPOT",
+            "TotalQuantity": 1816,
+            "TotalRevenue": 3460.81,
+            "BuyersCount": 95
+        }
+    ],
+    "Loyal Customers": [
+        {
+            "Description": "POSTAGE",
+            "TotalQuantity": 202,
+            "TotalRevenue": 4983.95,
+            "BuyersCount": 56
+        },
+        {
+            "Description": "REGENCY CAKESTAND 3 TIER",
+            "TotalQuantity": 359,
+            "TotalRevenue": 4361.25,
+            "BuyersCount": 112
+        },
+        {
+            "Description": "METAL SIGN TAKE IT OR LEAVE IT",
+            "TotalQuantity": 1464,
+            "TotalRevenue": 4038.0,
+            "BuyersCount": 19
+        },
+        {
+            "Description": "ASSORTED COLOUR BIRD ORNAMENT",
+            "TotalQuantity": 2189,
+            "TotalRevenue": 3584.21,
+            "BuyersCount": 108
+        },
+        {
+            "Description": "PAPER CHAIN KIT 50'S CHRISTMAS",
+            "TotalQuantity": 1176,
+            "TotalRevenue": 3309.2000000000003,
+            "BuyersCount": 132
+        }
+    ]
+}

@@ -9,56 +9,86 @@ def evaluate_clusters(rfm_df):
     total_customers = len(rfm_df)
     total_revenue = rfm_df['Monetary'].sum()
     
+    # Calculate Mean and Median for RFM
     cluster_summary = rfm_df.groupby('Cluster').agg({
         'CustomerID': 'count',
-        'Recency': 'mean',
-        'Frequency': 'mean',
-        'Monetary': ['mean', 'sum']
+        'Recency': ['mean', 'median'],
+        'Frequency': ['mean', 'median'],
+        'Monetary': ['mean', 'median', 'sum'],
+        'AverageOrderValue': 'mean'
     }).reset_index()
     
     # Flatten multi-level columns
-    cluster_summary.columns = ['Cluster', 'CustomerCount', 'AverageRecency', 'AverageFrequency', 'AverageMonetary', 'TotalRevenue']
+    cluster_summary.columns = [
+        'Cluster', 'CustomerCount', 
+        'MeanRecency', 'MedianRecency', 
+        'MeanFrequency', 'MedianFrequency', 
+        'MeanMonetary', 'MedianMonetary', 'TotalRevenue',
+        'AverageOrderValue'
+    ]
     
     # Calculate percentages
     cluster_summary['PercentageOfCustomers'] = (cluster_summary['CustomerCount'] / total_customers) * 100
     cluster_summary['PercentageOfRevenue'] = (cluster_summary['TotalRevenue'] / total_revenue) * 100
+    
+    # Reorder columns for readability
+    cols = ['Cluster', 'CustomerCount', 'PercentageOfCustomers', 
+            'MeanRecency', 'MedianRecency', 'MeanFrequency', 'MedianFrequency', 
+            'MeanMonetary', 'MedianMonetary', 'TotalRevenue', 'PercentageOfRevenue', 'AverageOrderValue']
+    cluster_summary = cluster_summary[cols]
     
     return cluster_summary
 
 def assign_segment_names(cluster_summary):
     """
     Dynamically assigns human-readable segment names based on cluster characteristics.
-    Uses Recency, Frequency, and Monetary relative averages to determine segments.
+    Uses Median Recency, Frequency, and Monetary to ensure robustness against outliers.
     """
     print("Assigning segment names based on RFM behavior...")
     
-    # Rank clusters based on criteria
-    # High Monetary and Frequency, Low Recency -> Champions
-    # High Recency, Low Frequency, Low Monetary -> Lost Customers
-    
-    # Simple logic based on ranking:
     cluster_summary = cluster_summary.copy()
     
-    # We define relative scores (ranks). Lower recency is better (so we invert rank)
-    cluster_summary['R_Score'] = cluster_summary['AverageRecency'].rank(ascending=False)
-    cluster_summary['F_Score'] = cluster_summary['AverageFrequency'].rank(ascending=True)
-    cluster_summary['M_Score'] = cluster_summary['AverageMonetary'].rank(ascending=True)
+    # Rank clusters based on medians. 
+    # Recency: lower is better (ascending=True for rank -> rank 1 is best)
+    # Actually, if we use rank(ascending=False) for recency, the lowest recency gets the highest score.
+    cluster_summary['R_Score'] = cluster_summary['MedianRecency'].rank(ascending=False)
+    # Frequency & Monetary: higher is better
+    cluster_summary['F_Score'] = cluster_summary['MedianFrequency'].rank(ascending=True)
+    cluster_summary['M_Score'] = cluster_summary['MedianMonetary'].rank(ascending=True)
     
     cluster_summary['Total_Score'] = cluster_summary['R_Score'] + cluster_summary['F_Score'] + cluster_summary['M_Score']
     
-    # Sort by total score descending to assign names
-    cluster_summary = cluster_summary.sort_values(by='Total_Score', ascending=False).reset_index(drop=True)
-    
-    # Possible names for K=4 (Assuming K=4 for this logic, but will be mapped safely)
-    names = ["Champions", "Loyal Customers", "At-Risk Customers", "Lost Customers"]
+    # Sort by total score descending to assign names conceptually
+    # Highest score = Champions. Lowest score = Lost Customers.
+    # The middle two can be distinguished by Recency vs Frequency.
     
     segment_map = {}
     for i, row in cluster_summary.iterrows():
-        cluster_id = row['Cluster']
-        if i < len(names):
-            segment_map[cluster_id] = names[i]
+        cluster_id = int(row['Cluster'])
+        r_rank = row['R_Score']
+        f_rank = row['F_Score']
+        m_rank = row['M_Score']
+        total = row['Total_Score']
+        
+        # Max possible total is 3 * K. For K=4, max is 12.
+        if total >= 10:
+            name = "Champions"
+        elif total <= 5:
+            name = "Lost Customers"
         else:
-            segment_map[cluster_id] = f"Segment_{i}"
+            # Middle tiers
+            if r_rank >= 3:
+                name = "Loyal Customers" # Good recency and okay F/M
+            else:
+                name = "At-Risk Customers" # Bad recency but okay F/M
+        
+        # Fallback to prevent duplicates if scores are tied oddly
+        if name in segment_map.values():
+            if name == "Loyal Customers": name = "Potential Loyalists"
+            elif name == "At-Risk Customers": name = "Hibernating"
+            else: name = f"{name} (Tier 2)"
+            
+        segment_map[cluster_id] = name
             
     # Drop temporary score columns
     cluster_summary.drop(columns=['R_Score', 'F_Score', 'M_Score', 'Total_Score'], inplace=True)

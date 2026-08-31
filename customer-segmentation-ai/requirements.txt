@@ -6,5 +6,6 @@ seaborn
 openpyxl
 joblib
 streamlit
+plotly
 jupyter
 nbformat
