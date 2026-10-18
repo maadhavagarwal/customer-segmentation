@@ -51,14 +51,14 @@ class TestPipeline(unittest.TestCase):
 
     def test_micro_persona(self):
         persona = classify_micro_persona(recency=5, frequency=10, monetary=4500.0, aov=450.0)
-        self.assertEqual(persona, "👑 Wholesale Power VIP")
+        self.assertEqual(persona, "Wholesale Bulk Buyer")
 
     def test_high_confidence_inference(self):
         model_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'models'))
         if os.path.exists(os.path.join(model_dir, 'kmeans_model.pkl')):
             c_id, dists, probs, scaled, ai_metrics = predict_new_customer(5, 15, 4500.0, model_dir=model_dir)
             top_prob = probs[c_id] * 100.0
-            self.assertGreaterEqual(top_prob, 80.0) # High confidence calibrated check
+            self.assertGreaterEqual(top_prob, 80.0)
             self.assertIn('churn_risk_pct', ai_metrics)
             self.assertIn('projected_clv', ai_metrics)
 

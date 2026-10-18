@@ -16,12 +16,12 @@ def load_models(model_dir='../models'):
 
 def predict_new_customer(recency, frequency, monetary, model_dir='../models'):
     """
-    High-Precision AI Inference Engine.
-    - Temperature-Calibrated Softmax (tau = 0.45) for 88% - 98% High Confidence Scores
+    Inference Engine.
+    - Temperature-Calibrated Softmax (tau = 0.45) for Segment Probability
     - Churn Risk Probability (%)
     - 12-Month Projected Customer Lifetime Value (CLV $)
     - Customer Engagement Index (0 - 100)
-    - AI Micro-Persona Classification
+    - Customer Persona Classification
     """
     # Input validation
     if recency < 0:
@@ -45,22 +45,23 @@ def predict_new_customer(recency, frequency, monetary, model_dir='../models'):
         
     # 3. StandardScaler Transformation
     input_scaled = scaler.transform(input_transformed)
+    scaled_cols = [f"{f}_scaled" for f in features]
+    input_scaled_df = pd.DataFrame(input_scaled, columns=scaled_cols)
     
     # 4. Predict Segment
-    cluster_id = int(kmeans.predict(input_scaled)[0])
+    cluster_id = int(kmeans.predict(input_scaled_df)[0])
     
     # 5. Calculate Distance to All Centroids
     centroids = kmeans.cluster_centers_
     distances = np.linalg.norm(centroids - input_scaled, axis=1)
     
-    # 6. Temperature-Calibrated Softmax (tau = 0.45 for high confidence calibration)
+    # 6. Temperature-Calibrated Softmax (tau = 0.45)
     tau = 0.45
     neg_distances = -distances / tau
-    exp_scores = np.exp(neg_distances - np.max(neg_distances)) # Numerically stable
+    exp_scores = np.exp(neg_distances - np.max(neg_distances))
     confidence_probs = exp_scores / np.sum(exp_scores)
     
     # 7. Predictive Churn Risk Score (%)
-    # Exponential Recency Decay Model
     churn_risk_pct = float(min(99.9, max(0.5, (1.0 - np.exp(-recency / 90.0)) * 100.0)))
     
     # 8. 12-Month Projected Customer Lifetime Value (CLV $)
@@ -74,7 +75,7 @@ def predict_new_customer(recency, frequency, monetary, model_dir='../models'):
     freq_boost = 12.0 * np.log1p(frequency)
     engagement_index = float(min(100.0, max(0.0, recency_health + freq_boost)))
     
-    # 10. AI Micro-Persona Classification
+    # 10. Customer Persona Classification
     persona = classify_micro_persona(recency, frequency, monetary, aov)
     
     ai_metrics = {
@@ -88,20 +89,20 @@ def predict_new_customer(recency, frequency, monetary, model_dir='../models'):
 
 def classify_micro_persona(recency, frequency, monetary, aov):
     """
-    Assigns granular AI Micro-Persona Badges based on RFM behavior.
+    Assigns professional Customer Persona Badges based on RFM behavior.
     """
     if monetary >= 3000 and frequency >= 8:
-        return "👑 Wholesale Power VIP"
+        return "Wholesale Bulk Buyer"
     elif monetary >= 1500 and recency > 60:
-        return "💎 Dormant High-Value VIP"
+        return "Dormant High-Value Customer"
     elif recency <= 20 and frequency >= 3:
-        return "⚡ Active High-Pace Loyalist"
+        return "Active High-Pace Customer"
     elif recency > 90 and monetary < 500:
-        return "💤 At-Risk Bargain Hunter"
+        return "At-Risk Low-Value Customer"
     elif recency <= 30 and frequency <= 2:
-        return "🌱 Promising New Buyer"
+        return "Promising New Customer"
     else:
-        return "🎯 Steady Core Shopper"
+        return "Standard Core Customer"
 
 def get_human_readable_explanation(cluster_id, distances, confidence_probs, summary_df):
     """
@@ -118,7 +119,7 @@ def get_human_readable_explanation(cluster_id, distances, confidence_probs, summ
         prob_dict[name] = round(float(confidence_probs[i] * 100), 1)
         
     top_prob = prob_dict[segment_name]
-    explanation = (f"The customer's transformed RFM profile matches the **{segment_name}** cluster centroid "
-                   f"(Euclidean Distance: {dist_dict[segment_name]}, High AI Confidence: **{top_prob}%**).")
+    explanation = (f"The customer's transformed RFM profile matches the {segment_name} cluster centroid "
+                   f"(Euclidean Distance: {dist_dict[segment_name]}, Segment Probability: {top_prob}%).")
     
     return segment_name, dist_dict, prob_dict, explanation
