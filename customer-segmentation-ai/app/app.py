@@ -199,6 +199,47 @@ with tab1:
         Tight box boundaries in Loyal and Lost segments demonstrate mathematical cluster stability.
         """)
 
+    st.markdown("---")
+    c5, c6 = st.columns(2)
+    with c5:
+        st.subheader("Hierarchical Revenue Sunburst (Segment to RFM Quintile)")
+        top_rfm_df = df.groupby(['SegmentName', 'RFM_Composite'], as_index=False)['Monetary'].sum()
+        top_rfm_df = top_rfm_df.sort_values(by='Monetary', ascending=False).groupby('SegmentName').head(6)
+        fig_sun = px.sunburst(
+            top_rfm_df,
+            path=['SegmentName', 'RFM_Composite'],
+            values='Monetary',
+            color='SegmentName',
+            title="Revenue Hierarchy: Customer Segment -> Top RFM Composite Scores"
+        )
+        st.plotly_chart(fig_sun, use_container_width=True)
+        st.info("""
+        **Chart Explanation**:
+        This interactive hierarchical sunburst chart drills down from high-level K-Means segments into granular 3-digit RFM quintile scores (e.g., 555, 554, 111).
+        Within the Champions ring, score '555' (top 20% in Recency, Frequency, and Monetary) dominates total revenue contribution.
+        Click any inner segment slice to interactively zoom into its constituent RFM score sub-cohorts.
+        """)
+
+    with c6:
+        st.subheader("Customer Engagement Index Violin Density by Segment")
+        fig_violin = px.violin(
+            df,
+            x='SegmentName',
+            y='EngagementIndex',
+            color='SegmentName',
+            box=True,
+            points=False,
+            title="Customer Engagement Index (0 - 100) Probability Density",
+            labels={'EngagementIndex': 'Engagement Score (0 - 100)', 'SegmentName': 'Segment'}
+        )
+        st.plotly_chart(fig_violin, use_container_width=True)
+        st.info("""
+        **Chart Explanation**:
+        This violin plot combines a kernel density estimation (KDE) envelope with an internal interquartile boxplot for the Engagement Index.
+        Champions cluster tightly near the 95-100 ceiling, whereas Lost Customers form a lower-tail density around 20-40.
+        The distinct vertical separation between violin bodies confirms minimal behavioral overlap across clusters.
+        """)
+
 # ----------------------------------------------------
 # TAB 2: SEGMENT ANALYSIS & RADAR CHARTS
 # ----------------------------------------------------
@@ -218,6 +259,49 @@ with tab2:
         'PercentageOfRevenue': '{:.1f}%',
         'AverageOrderValue': '${:,.2f}'
     }), use_container_width=True)
+
+    st.markdown("---")
+    r_3d1, r_3d2 = st.columns(2)
+    with r_3d1:
+        st.subheader("Interactive 3D Log-RFM Cluster Manifold")
+        df_3d = df.copy()
+        df_3d['Log_Recency'] = np.log1p(df_3d['Recency'])
+        df_3d['Log_Frequency'] = np.log1p(df_3d['Frequency'])
+        df_3d['Log_Monetary'] = np.log1p(df_3d['Monetary'])
+        fig_3d = px.scatter_3d(
+            df_3d,
+            x='Log_Recency',
+            y='Log_Frequency',
+            z='Log_Monetary',
+            color='SegmentName',
+            hover_data=['CustomerID', 'Recency', 'Frequency', 'Monetary'],
+            opacity=0.7,
+            title="3D Log-Transformed RFM Feature Space (4,338 Customers)"
+        )
+        fig_3d.update_traces(marker=dict(size=3.5))
+        st.plotly_chart(fig_3d, use_container_width=True)
+        st.info("""
+        **Chart Explanation**:
+        This rotatable 3D scatter plot renders all 4,338 customer points directly inside the 3-dimensional log-transformed RFM feature space where K-Means operates.
+        Rotating the cube reveals the exact hyperplanes separating Champions (high Z, high Y, low X) from Lost Customers (high X, low Y, low Z).
+        """)
+
+    with r_3d2:
+        st.subheader("Multivariate Parallel Coordinates Plot")
+        df_par = df[['Cluster', 'Recency', 'Frequency', 'Monetary', 'EngagementIndex', 'ChurnRiskPct']].copy()
+        fig_par = px.parallel_coordinates(
+            df_par,
+            color='Cluster',
+            dimensions=['Recency', 'Frequency', 'Monetary', 'EngagementIndex', 'ChurnRiskPct'],
+            color_continuous_scale=px.colors.diverging.Tealrose,
+            title="5-Dimensional Behavioral Trajectory Across Clusters"
+        )
+        st.plotly_chart(fig_par, use_container_width=True)
+        st.info("""
+        **Chart Explanation**:
+        This parallel coordinates plot traces each customer across 5 simultaneous behavioral axes: Recency, Frequency, Monetary, Engagement Index, and Churn Risk.
+        Notice the strong inverse cross-over pattern between Engagement Index and Churn Risk Pct, demonstrating coherent multi-dimensional cluster structure.
+        """)
     
     st.markdown("---")
     r1, r2 = st.columns(2)
@@ -671,7 +755,7 @@ with tab6:
             use_container_width=True
         )
 
-        cb1, cb2 = st.columns(2)
+        cb1, cb2, cb3 = st.columns(3)
         with cb1:
             fig_sil_comp = px.bar(
                 clust_df,
@@ -679,13 +763,13 @@ with tab6:
                 y='Silhouette_Score',
                 color='Algorithm',
                 text_auto='.4f',
-                title="Silhouette Score Comparison (Higher is Better)"
+                title="Silhouette Score (Higher is Better)"
             )
             st.plotly_chart(fig_sil_comp, use_container_width=True)
             st.info("""
             **Chart Explanation**:
             This bar chart compares cluster cohesion and separation across K-Means, Gaussian Mixture Models (EM), and Agglomerative Ward Clustering.
-            K-Means achieves the highest Silhouette Score (0.3375), mathematically proving that spherical variance minimization in log-scaled RFM space outperforms hierarchical and soft Gaussian partitioning.
+            K-Means achieves the highest Silhouette Score (0.3373), proving spherical variance minimization outperforms hierarchical and soft Gaussian partitioning.
             """)
 
         with cb2:
@@ -695,13 +779,29 @@ with tab6:
                 y='Davies_Bouldin_Index',
                 color='Algorithm',
                 text_auto='.4f',
-                title="Davies-Bouldin Index Comparison (Lower is Better)"
+                title="Davies-Bouldin Index (Lower is Better)"
             )
             st.plotly_chart(fig_dbi_comp, use_container_width=True)
             st.info("""
             **Chart Explanation**:
             The Davies-Bouldin Index measures the ratio of within-cluster scatter to between-cluster separation (lower values indicate tighter, better-separated clusters).
-            K-Means achieves the lowest Davies-Bouldin Index among all tested algorithms, validating its selection as the primary segmentation engine.
+            K-Means achieves the lowest Davies-Bouldin Index (1.0106) among all tested algorithms.
+            """)
+
+        with cb3:
+            fig_chi_comp = px.bar(
+                clust_df,
+                x='Algorithm',
+                y='Calinski_Harabasz_Score',
+                color='Algorithm',
+                text_auto='.1f',
+                title="Calinski-Harabasz Score (Higher is Better)"
+            )
+            st.plotly_chart(fig_chi_comp, use_container_width=True)
+            st.info("""
+            **Chart Explanation**:
+            The Calinski-Harabasz Index (Variance Ratio Criterion) evaluates between-cluster dispersion relative to within-cluster dispersion.
+            K-Means scores highest at 3,328.9, confirming maximum between-group variance separation.
             """)
 
         st.markdown("---")
@@ -715,7 +815,7 @@ with tab6:
         sc4.metric("Recall", f"{churn_meta['recall']*100:.1f}%")
         sc5.metric("F1-Score", f"{churn_meta['f1_score']*100:.1f}%")
 
-        ch_plot1, ch_plot2 = st.columns(2)
+        ch_plot1, ch_plot2, ch_plot3 = st.columns(3)
         with ch_plot1:
             roc_df = pd.DataFrame({
                 'False Positive Rate (FPR)': churn_meta['roc_curve']['fpr'],
@@ -732,10 +832,27 @@ with tab6:
             st.info("""
             **Chart Explanation**:
             The Receiver Operating Characteristic (ROC) curve plots the True Positive Rate against the False Positive Rate across classification thresholds on the 25% temporal holdout set.
-            An Area Under the Curve (AUC) significantly above the 0.50 random baseline confirms strong discriminative power in predicting customer defection.
+            An AUC of 0.7490 confirms strong discriminative power in predicting customer defection.
             """)
 
         with ch_plot2:
+            cm_arr = np.array(churn_meta['confusion_matrix'])
+            fig_cm = px.imshow(
+                cm_arr,
+                text_auto=True,
+                color_continuous_scale='Blues',
+                x=['Predicted Retained (0)', 'Predicted Churned (1)'],
+                y=['Actual Retained (0)', 'Actual Churned (1)'],
+                title="Holdout Test Confusion Matrix (N = 840)"
+            )
+            st.plotly_chart(fig_cm, use_container_width=True)
+            st.info("""
+            **Chart Explanation**:
+            This Confusion Matrix heatmap evaluates out-of-sample classification performance on 840 holdout customers.
+            The diagonal cells represent True Negatives (338 retained) and True Positives (227 churned), demonstrating balanced sensitivity and specificity.
+            """)
+
+        with ch_plot3:
             imp_df = pd.DataFrame(churn_meta['feature_importances'])
             fig_imp = px.bar(
                 imp_df,
@@ -744,13 +861,13 @@ with tab6:
                 orientation='h',
                 color='Feature',
                 text_auto='.3f',
-                title="Random Forest Churn Feature Importance (Gini Impurity Reduction)"
+                title="Random Forest Churn Feature Importance"
             )
             st.plotly_chart(fig_imp, use_container_width=True)
             st.info("""
             **Chart Explanation**:
             This horizontal bar chart displays Gini feature importance weights learned by the 120-tree Random Forest classifier.
-            Recency, Frequency, and Monetary spend during the observation window are the strongest predictors of future holdout period retention vs. defection.
+            Monetary spend, Frequency, and Recency during the observation window are the strongest predictors of future retention vs. defection.
             """)
 
         st.markdown("---")
@@ -811,23 +928,42 @@ with tab6:
         an4.metric("Contamination Rate", f"{anom_meta['anomaly_percentage']:.1f}%")
 
         if 'Anomaly_Label' in df.columns:
-            fig_anom = px.scatter(
-                df,
-                x='Frequency',
-                y='Monetary',
-                color='Anomaly_Label',
-                log_x=True,
-                log_y=True,
-                hover_data=['CustomerID', 'SegmentName', 'Recency', 'Anomaly_Score'],
-                title="Isolation Forest Decision Boundary: Normal vs Anomalous Buyers (Log Scale)",
-                labels={'Frequency': 'Order Frequency (Log)', 'Monetary': 'Monetary Spend ($ Log)'}
-            )
-            st.plotly_chart(fig_anom, use_container_width=True)
-            st.info("""
-            **Chart Explanation**:
-            This scatter plot visualizes the Isolation Forest anomaly detection results across Frequency and Monetary spend.
-            The 5% flagged anomalies (217 customers) isolate extreme B2B wholesale buyers and unusual purchasing profiles from standard retail shoppers.
-            """)
+            an_col1, an_col2 = st.columns(2)
+            with an_col1:
+                fig_anom = px.scatter(
+                    df,
+                    x='Frequency',
+                    y='Monetary',
+                    color='Anomaly_Label',
+                    log_x=True,
+                    log_y=True,
+                    hover_data=['CustomerID', 'SegmentName', 'Recency', 'Anomaly_Score'],
+                    title="Isolation Forest Decision Boundary: Normal vs Anomalous Buyers",
+                    labels={'Frequency': 'Order Frequency (Log)', 'Monetary': 'Monetary Spend ($ Log)'}
+                )
+                st.plotly_chart(fig_anom, use_container_width=True)
+                st.info("""
+                **Chart Explanation**:
+                This scatter plot visualizes the Isolation Forest anomaly detection results across Frequency and Monetary spend.
+                The 5% flagged anomalies (217 customers) isolate extreme B2B wholesale buyers and unusual purchasing profiles from standard retail shoppers.
+                """)
+
+            with an_col2:
+                fig_anom_hist = px.histogram(
+                    df,
+                    x='Anomaly_Score',
+                    color='Anomaly_Label',
+                    nbins=40,
+                    title="Isolation Forest Decision Function Score Distribution",
+                    labels={'Anomaly_Score': 'Isolation Forest Decision Score (< 0 = Anomaly)'}
+                )
+                fig_anom_hist.add_vline(x=0.0, line_dash="dash", line_color="red")
+                st.plotly_chart(fig_anom_hist, use_container_width=True)
+                st.info("""
+                **Chart Explanation**:
+                This histogram plots the Isolation Forest decision function scores across all 4,338 customer profiles.
+                Scores below the red 0.0 threshold require fewer random tree splits to isolate, mathematically identifying anomalous extreme buyers.
+                """)
 
             st.markdown("**Top Flagged Anomalous Customer Profiles (Lowest Isolation Forest Decision Scores)**")
             st.dataframe(pd.DataFrame(anom_meta['top_anomalies']), use_container_width=True)
@@ -906,22 +1042,44 @@ with tab7:
         )
     
     st.markdown("---")
-    st.subheader("Customer Portfolio Churn Risk Distribution")
-    if 'ChurnRiskPct' in df.columns:
-        fig_churn = px.histogram(
-            df,
-            x='ChurnRiskPct',
-            color='SegmentName',
-            nbins=30,
-            title="Portfolio Customer Churn Risk (%) Density Distribution",
-            labels={'ChurnRiskPct': 'Churn Risk Probability (%)', 'count': 'Number of Customers'}
+    p_c1, p_c2 = st.columns(2)
+    with p_c1:
+        st.subheader("Customer Portfolio Churn Risk Distribution")
+        if 'ChurnRiskPct' in df.columns:
+            fig_churn = px.histogram(
+                df,
+                x='ChurnRiskPct',
+                color='SegmentName',
+                nbins=30,
+                title="Portfolio Customer Churn Risk (%) Density Distribution",
+                labels={'ChurnRiskPct': 'Churn Risk Probability (%)', 'count': 'Number of Customers'}
+            )
+            st.plotly_chart(fig_churn, use_container_width=True)
+            st.info("""
+            **Chart Explanation**:
+            This histogram displays the density distribution of predicted churn risk percentages across all 4,338 customers.
+            Lost Customers are concentrated at the far right (>80% churn risk), while Champions cluster at the far left (<20% risk).
+            At-Risk Customers occupy the middle zone (40%-70%), identifying prime candidates for active retention intervention.
+            """)
+
+    with p_c2:
+        st.subheader("Behavioral Feature Correlation Matrix Heatmap")
+        corr_cols = ['Recency', 'Frequency', 'Monetary', 'AverageOrderValue', 'UniqueProducts', 'EngagementIndex', 'ChurnRiskPct']
+        avail_corr_cols = [c for c in corr_cols if c in df.columns]
+        corr_matrix = df[avail_corr_cols].corr().round(2)
+        fig_corr = px.imshow(
+            corr_matrix,
+            text_auto=True,
+            color_continuous_scale='RdBu_r',
+            zmin=-1,
+            zmax=1,
+            title="Pearson Correlation Matrix Across Behavioral & AI Features"
         )
-        st.plotly_chart(fig_churn, use_container_width=True)
+        st.plotly_chart(fig_corr, use_container_width=True)
         st.info("""
         **Chart Explanation**:
-        This histogram displays the density distribution of predicted churn risk percentages across all 4,338 customers.
-        Lost Customers are concentrated at the far right (>80% churn risk), while Champions cluster at the far left (<20% risk).
-        At-Risk Customers occupy the middle zone (40%-70%), identifying prime candidates for active retention intervention.
+        This Pearson correlation heatmap quantifies linear dependencies across all engineered customer variables.
+        Frequency and Monetary exhibit strong positive correlation, whereas Recency and Engagement Index show strong negative correlation (-0.89), validating feature engineering consistency.
         """)
     
     st.markdown("---")
