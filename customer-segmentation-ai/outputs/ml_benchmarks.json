@@ -1,0 +1,4374 @@
+{
+    "clustering_benchmarks": [
+        {
+            "Algorithm": "K-Means (Lloyd's k-means++)",
+            "Clusters (K)": 4,
+            "Silhouette_Score": 0.3373,
+            "Davies_Bouldin_Index": 1.0106,
+            "Calinski_Harabasz_Score": 3328.92
+        },
+        {
+            "Algorithm": "Gaussian Mixture Model (EM)",
+            "Clusters (K)": 4,
+            "Silhouette_Score": 0.1761,
+            "Davies_Bouldin_Index": 1.7048,
+            "Calinski_Harabasz_Score": 2170.6
+        },
+        {
+            "Algorithm": "Agglomerative Hierarchical (Ward)",
+            "Clusters (K)": 4,
+            "Silhouette_Score": 0.28,
+            "Davies_Bouldin_Index": 1.0992,
+            "Calinski_Harabasz_Score": 2739.57
+        }
+    ],
+    "supervised_models": {
+        "churn_classifier": {
+            "model_name": "Random Forest Classifier (120 Trees, Temporal Holdout Split)",
+            "observation_cutoff_date": "2011-09-07",
+            "train_samples": 2517,
+            "test_samples": 840,
+            "roc_auc": 0.749,
+            "accuracy": 0.6726,
+            "precision": 0.6086,
+            "recall": 0.6376,
+            "f1_score": 0.6228,
+            "confusion_matrix": [
+                [
+                    338,
+                    146
+                ],
+                [
+                    129,
+                    227
+                ]
+            ],
+            "roc_curve": {
+                "fpr": [
+                    0.0,
+                    0.0062,
+                    0.0145,
+                    0.0207,
+                    0.0269,
+                    0.0331,
+                    0.0496,
+                    0.0558,
+                    0.064,
+                    0.0764,
+                    0.0826,
+                    0.0909,
+                    0.0992,
+                    0.1095,
+                    0.1198,
+                    0.1281,
+                    0.1364,
+                    0.1426,
+                    0.1529,
+                    0.1632,
+                    0.1736,
+                    0.1901,
+                    0.2004,
+                    0.2087,
+                    0.2149,
+                    0.2314,
+                    0.2707,
+                    0.2789,
+                    0.2872,
+                    0.2934,
+                    0.314,
+                    0.3285,
+                    0.3409,
+                    0.3471,
+                    0.3636,
+                    0.3698,
+                    0.3822,
+                    0.3926,
+                    0.4008,
+                    0.4215,
+                    0.4442,
+                    0.4628,
+                    0.469,
+                    0.4814,
+                    0.5,
+                    0.5062,
+                    0.5227,
+                    0.5351,
+                    0.562,
+                    0.5785,
+                    0.6612,
+                    0.6921,
+                    0.7479,
+                    0.7707,
+                    0.845,
+                    1.0
+                ],
+                "tpr": [
+                    0.0,
+                    0.0197,
+                    0.0506,
+                    0.073,
+                    0.1152,
+                    0.1489,
+                    0.1657,
+                    0.2022,
+                    0.2303,
+                    0.2556,
+                    0.2781,
+                    0.2921,
+                    0.3315,
+                    0.3483,
+                    0.3708,
+                    0.3848,
+                    0.3961,
+                    0.4129,
+                    0.4354,
+                    0.4494,
+                    0.4803,
+                    0.4916,
+                    0.5056,
+                    0.5197,
+                    0.5337,
+                    0.5449,
+                    0.573,
+                    0.5899,
+                    0.6039,
+                    0.6348,
+                    0.6489,
+                    0.6742,
+                    0.6826,
+                    0.7051,
+                    0.7163,
+                    0.7303,
+                    0.75,
+                    0.7584,
+                    0.7697,
+                    0.7809,
+                    0.7978,
+                    0.8118,
+                    0.8315,
+                    0.8455,
+                    0.8567,
+                    0.8764,
+                    0.8904,
+                    0.8989,
+                    0.9101,
+                    0.9326,
+                    0.9466,
+                    0.9551,
+                    0.9691,
+                    0.9803,
+                    0.9916,
+                    1.0
+                ]
+            },
+            "feature_importances": [
+                {
+                    "Feature": "Monetary",
+                    "Importance": 0.2084
+                },
+                {
+                    "Feature": "Frequency",
+                    "Importance": 0.2059
+                },
+                {
+                    "Feature": "TotalQuantity",
+                    "Importance": 0.1911
+                },
+                {
+                    "Feature": "Recency",
+                    "Importance": 0.1571
+                },
+                {
+                    "Feature": "UniqueProducts",
+                    "Importance": 0.1372
+                },
+                {
+                    "Feature": "AverageOrderValue",
+                    "Importance": 0.1003
+                }
+            ]
+        },
+        "clv_regressor": {
+            "model_name": "Gradient Boosting Regressor (120 Estimators)",
+            "train_samples": 3253,
+            "test_samples": 1085,
+            "r2_score": 0.8401,
+            "mae": 555.08,
+            "rmse": 3988.15,
+            "feature_importances": [
+                {
+                    "Feature": "TotalQuantity",
+                    "Importance": 0.9336
+                },
+                {
+                    "Feature": "AverageOrderValue",
+                    "Importance": 0.023
+                },
+                {
+                    "Feature": "Frequency",
+                    "Importance": 0.0203
+                },
+                {
+                    "Feature": "Recency",
+                    "Importance": 0.013
+                },
+                {
+                    "Feature": "UniqueProducts",
+                    "Importance": 0.008
+                },
+                {
+                    "Feature": "PurchaseDays",
+                    "Importance": 0.0021
+                }
+            ],
+            "actual_vs_predicted": [
+                {
+                    "Actual_CLV": 195.55,
+                    "Predicted_CLV": 215.08
+                },
+                {
+                    "Actual_CLV": 1025.44,
+                    "Predicted_CLV": 1349.84
+                },
+                {
+                    "Actual_CLV": 1824.23,
+                    "Predicted_CLV": 1861.87
+                },
+                {
+                    "Actual_CLV": 272.04,
+                    "Predicted_CLV": 274.08
+                },
+                {
+                    "Actual_CLV": 397.29,
+                    "Predicted_CLV": 380.36
+                },
+                {
+                    "Actual_CLV": 123.1,
+                    "Predicted_CLV": 116.59
+                },
+                {
+                    "Actual_CLV": 172.29,
+                    "Predicted_CLV": 186.58
+                },
+                {
+                    "Actual_CLV": 572.45,
+                    "Predicted_CLV": 452.17
+                },
+                {
+                    "Actual_CLV": 422.64,
+                    "Predicted_CLV": 403.47
+                },
+                {
+                    "Actual_CLV": 7657.31,
+                    "Predicted_CLV": 7887.96
+                },
+                {
+                    "Actual_CLV": 312.23,
+                    "Predicted_CLV": 304.33
+                },
+                {
+                    "Actual_CLV": 957.97,
+                    "Predicted_CLV": 868.01
+                },
+                {
+                    "Actual_CLV": 2092.66,
+                    "Predicted_CLV": 2347.9
+                },
+                {
+                    "Actual_CLV": 623.5,
+                    "Predicted_CLV": 688.49
+                },
+                {
+                    "Actual_CLV": 285.33,
+                    "Predicted_CLV": 280.61
+                },
+                {
+                    "Actual_CLV": 610.01,
+                    "Predicted_CLV": 795.3
+                },
+                {
+                    "Actual_CLV": 52.83,
+                    "Predicted_CLV": 63.63
+                },
+                {
+                    "Actual_CLV": 866.33,
+                    "Predicted_CLV": 883.93
+                },
+                {
+                    "Actual_CLV": 5260.71,
+                    "Predicted_CLV": 5708.06
+                },
+                {
+                    "Actual_CLV": 3235.92,
+                    "Predicted_CLV": 2686.78
+                },
+                {
+                    "Actual_CLV": 328.32,
+                    "Predicted_CLV": 403.54
+                },
+                {
+                    "Actual_CLV": 868.49,
+                    "Predicted_CLV": 882.23
+                },
+                {
+                    "Actual_CLV": 1689.81,
+                    "Predicted_CLV": 1838.55
+                },
+                {
+                    "Actual_CLV": 329.65,
+                    "Predicted_CLV": 299.37
+                },
+                {
+                    "Actual_CLV": 1090.24,
+                    "Predicted_CLV": 1131.45
+                },
+                {
+                    "Actual_CLV": 180.15,
+                    "Predicted_CLV": 328.35
+                },
+                {
+                    "Actual_CLV": 478.09,
+                    "Predicted_CLV": 423.55
+                },
+                {
+                    "Actual_CLV": 3756.33,
+                    "Predicted_CLV": 3749.93
+                },
+                {
+                    "Actual_CLV": 467.51,
+                    "Predicted_CLV": 386.9
+                },
+                {
+                    "Actual_CLV": 205.7,
+                    "Predicted_CLV": 256.59
+                },
+                {
+                    "Actual_CLV": 1628.12,
+                    "Predicted_CLV": 1630.77
+                },
+                {
+                    "Actual_CLV": 343.36,
+                    "Predicted_CLV": 388.76
+                },
+                {
+                    "Actual_CLV": 1454.58,
+                    "Predicted_CLV": 1711.79
+                },
+                {
+                    "Actual_CLV": 24879.52,
+                    "Predicted_CLV": 22850.67
+                },
+                {
+                    "Actual_CLV": 383.75,
+                    "Predicted_CLV": 332.95
+                },
+                {
+                    "Actual_CLV": 1332.22,
+                    "Predicted_CLV": 1292.43
+                },
+                {
+                    "Actual_CLV": 139.35,
+                    "Predicted_CLV": 142.65
+                },
+                {
+                    "Actual_CLV": 244.6,
+                    "Predicted_CLV": 384.42
+                },
+                {
+                    "Actual_CLV": 307.4,
+                    "Predicted_CLV": 279.95
+                },
+                {
+                    "Actual_CLV": 5815.9,
+                    "Predicted_CLV": 7741.05
+                },
+                {
+                    "Actual_CLV": 1670.1,
+                    "Predicted_CLV": 1658.45
+                },
+                {
+                    "Actual_CLV": 1296.98,
+                    "Predicted_CLV": 1266.72
+                },
+                {
+                    "Actual_CLV": 1439.66,
+                    "Predicted_CLV": 1804.89
+                },
+                {
+                    "Actual_CLV": 325.8,
+                    "Predicted_CLV": 278.03
+                },
+                {
+                    "Actual_CLV": 277.07,
+                    "Predicted_CLV": 288.2
+                },
+                {
+                    "Actual_CLV": 59.8,
+                    "Predicted_CLV": 63.63
+                },
+                {
+                    "Actual_CLV": 1109.35,
+                    "Predicted_CLV": 814.81
+                },
+                {
+                    "Actual_CLV": 534.31,
+                    "Predicted_CLV": 681.03
+                },
+                {
+                    "Actual_CLV": 2917.73,
+                    "Predicted_CLV": 2513.57
+                },
+                {
+                    "Actual_CLV": 1532.2,
+                    "Predicted_CLV": 1510.06
+                },
+                {
+                    "Actual_CLV": 270.8,
+                    "Predicted_CLV": 288.12
+                },
+                {
+                    "Actual_CLV": 668.95,
+                    "Predicted_CLV": 774.48
+                },
+                {
+                    "Actual_CLV": 632.4,
+                    "Predicted_CLV": 504.03
+                },
+                {
+                    "Actual_CLV": 618.09,
+                    "Predicted_CLV": 696.11
+                },
+                {
+                    "Actual_CLV": 480.38,
+                    "Predicted_CLV": 453.74
+                },
+                {
+                    "Actual_CLV": 5401.9,
+                    "Predicted_CLV": 5366.45
+                },
+                {
+                    "Actual_CLV": 1021.58,
+                    "Predicted_CLV": 993.94
+                },
+                {
+                    "Actual_CLV": 920.1,
+                    "Predicted_CLV": 732.83
+                },
+                {
+                    "Actual_CLV": 134.1,
+                    "Predicted_CLV": 142.65
+                },
+                {
+                    "Actual_CLV": 643.9,
+                    "Predicted_CLV": 603.54
+                },
+                {
+                    "Actual_CLV": 406.53,
+                    "Predicted_CLV": 396.13
+                },
+                {
+                    "Actual_CLV": 989.07,
+                    "Predicted_CLV": 758.38
+                },
+                {
+                    "Actual_CLV": 2103.09,
+                    "Predicted_CLV": 2099.96
+                },
+                {
+                    "Actual_CLV": 540.45,
+                    "Predicted_CLV": 564.23
+                },
+                {
+                    "Actual_CLV": 3404.27,
+                    "Predicted_CLV": 2885.0
+                },
+                {
+                    "Actual_CLV": 559.12,
+                    "Predicted_CLV": 564.23
+                },
+                {
+                    "Actual_CLV": 154.83,
+                    "Predicted_CLV": 202.91
+                },
+                {
+                    "Actual_CLV": 172.3,
+                    "Predicted_CLV": 281.15
+                },
+                {
+                    "Actual_CLV": 1793.58,
+                    "Predicted_CLV": 1848.57
+                },
+                {
+                    "Actual_CLV": 45802.24,
+                    "Predicted_CLV": 73616.85
+                },
+                {
+                    "Actual_CLV": 3028.16,
+                    "Predicted_CLV": 2878.54
+                },
+                {
+                    "Actual_CLV": 511.36,
+                    "Predicted_CLV": 453.44
+                },
+                {
+                    "Actual_CLV": 279.94,
+                    "Predicted_CLV": 380.11
+                },
+                {
+                    "Actual_CLV": 1320.95,
+                    "Predicted_CLV": 1308.5
+                },
+                {
+                    "Actual_CLV": 516.42,
+                    "Predicted_CLV": 453.74
+                },
+                {
+                    "Actual_CLV": 678.25,
+                    "Predicted_CLV": 564.76
+                },
+                {
+                    "Actual_CLV": 426.6,
+                    "Predicted_CLV": 396.13
+                },
+                {
+                    "Actual_CLV": 361.54,
+                    "Predicted_CLV": 388.76
+                },
+                {
+                    "Actual_CLV": 2471.23,
+                    "Predicted_CLV": 2165.33
+                },
+                {
+                    "Actual_CLV": 1516.24,
+                    "Predicted_CLV": 1214.14
+                },
+                {
+                    "Actual_CLV": 39.12,
+                    "Predicted_CLV": 63.63
+                },
+                {
+                    "Actual_CLV": 229.72,
+                    "Predicted_CLV": 382.19
+                },
+                {
+                    "Actual_CLV": 817.86,
+                    "Predicted_CLV": 923.88
+                },
+                {
+                    "Actual_CLV": 19766.59,
+                    "Predicted_CLV": 19447.52
+                },
+                {
+                    "Actual_CLV": 1135.04,
+                    "Predicted_CLV": 1141.96
+                },
+                {
+                    "Actual_CLV": 803.54,
+                    "Predicted_CLV": 930.38
+                },
+                {
+                    "Actual_CLV": 1399.92,
+                    "Predicted_CLV": 1200.2
+                },
+                {
+                    "Actual_CLV": 1089.18,
+                    "Predicted_CLV": 1055.86
+                },
+                {
+                    "Actual_CLV": 1241.04,
+                    "Predicted_CLV": 1021.07
+                },
+                {
+                    "Actual_CLV": 3007.8,
+                    "Predicted_CLV": 3082.58
+                },
+                {
+                    "Actual_CLV": 1031.07,
+                    "Predicted_CLV": 917.65
+                },
+                {
+                    "Actual_CLV": 3514.26,
+                    "Predicted_CLV": 2826.73
+                },
+                {
+                    "Actual_CLV": 1226.88,
+                    "Predicted_CLV": 1417.36
+                },
+                {
+                    "Actual_CLV": 563.15,
+                    "Predicted_CLV": 564.23
+                },
+                {
+                    "Actual_CLV": 2005.63,
+                    "Predicted_CLV": 1778.6
+                },
+                {
+                    "Actual_CLV": 3572.65,
+                    "Predicted_CLV": 3725.37
+                },
+                {
+                    "Actual_CLV": 1165.79,
+                    "Predicted_CLV": 1212.69
+                },
+                {
+                    "Actual_CLV": 1119.41,
+                    "Predicted_CLV": 1350.16
+                },
+                {
+                    "Actual_CLV": 77.3,
+                    "Predicted_CLV": 84.01
+                },
+                {
+                    "Actual_CLV": 6310.03,
+                    "Predicted_CLV": 4150.09
+                },
+                {
+                    "Actual_CLV": 775.44,
+                    "Predicted_CLV": 792.78
+                },
+                {
+                    "Actual_CLV": 172.9,
+                    "Predicted_CLV": 172.66
+                },
+                {
+                    "Actual_CLV": 420.57,
+                    "Predicted_CLV": 442.39
+                },
+                {
+                    "Actual_CLV": 909.34,
+                    "Predicted_CLV": 784.42
+                },
+                {
+                    "Actual_CLV": 427.8,
+                    "Predicted_CLV": 396.13
+                },
+                {
+                    "Actual_CLV": 236.85,
+                    "Predicted_CLV": 271.67
+                },
+                {
+                    "Actual_CLV": 265.85,
+                    "Predicted_CLV": 283.58
+                },
+                {
+                    "Actual_CLV": 1566.96,
+                    "Predicted_CLV": 1371.76
+                },
+                {
+                    "Actual_CLV": 965.16,
+                    "Predicted_CLV": 1081.45
+                },
+                {
+                    "Actual_CLV": 6009.93,
+                    "Predicted_CLV": 6307.74
+                },
+                {
+                    "Actual_CLV": 349.1,
+                    "Predicted_CLV": 388.76
+                },
+                {
+                    "Actual_CLV": 1877.59,
+                    "Predicted_CLV": 1808.8
+                },
+                {
+                    "Actual_CLV": 129.74,
+                    "Predicted_CLV": 143.29
+                },
+                {
+                    "Actual_CLV": 389.27,
+                    "Predicted_CLV": 551.86
+                },
+                {
+                    "Actual_CLV": 2053.02,
+                    "Predicted_CLV": 2099.69
+                },
+                {
+                    "Actual_CLV": 744.41,
+                    "Predicted_CLV": 810.5
+                },
+                {
+                    "Actual_CLV": 386.43,
+                    "Predicted_CLV": 392.84
+                },
+                {
+                    "Actual_CLV": 60632.75,
+                    "Predicted_CLV": 62600.25
+                },
+                {
+                    "Actual_CLV": 310.06,
+                    "Predicted_CLV": 431.24
+                },
+                {
+                    "Actual_CLV": 5059.32,
+                    "Predicted_CLV": 3275.85
+                },
+                {
+                    "Actual_CLV": 246.04,
+                    "Predicted_CLV": 276.67
+                },
+                {
+                    "Actual_CLV": 3594.92,
+                    "Predicted_CLV": 3258.71
+                },
+                {
+                    "Actual_CLV": 3320.85,
+                    "Predicted_CLV": 3305.03
+                },
+                {
+                    "Actual_CLV": 309.52,
+                    "Predicted_CLV": 287.09
+                },
+                {
+                    "Actual_CLV": 621.29,
+                    "Predicted_CLV": 839.73
+                },
+                {
+                    "Actual_CLV": 6452.05,
+                    "Predicted_CLV": 6420.55
+                },
+                {
+                    "Actual_CLV": 380.64,
+                    "Predicted_CLV": 332.95
+                },
+                {
+                    "Actual_CLV": 161.0,
+                    "Predicted_CLV": 172.9
+                },
+                {
+                    "Actual_CLV": 704.04,
+                    "Predicted_CLV": 649.37
+                },
+                {
+                    "Actual_CLV": 397.67,
+                    "Predicted_CLV": 388.17
+                },
+                {
+                    "Actual_CLV": 6558.42,
+                    "Predicted_CLV": 5155.43
+                },
+                {
+                    "Actual_CLV": 394.98,
+                    "Predicted_CLV": 390.83
+                },
+                {
+                    "Actual_CLV": 7137.2,
+                    "Predicted_CLV": 8292.63
+                },
+                {
+                    "Actual_CLV": 93544.06,
+                    "Predicted_CLV": 56642.87
+                },
+                {
+                    "Actual_CLV": 323.03,
+                    "Predicted_CLV": 287.09
+                },
+                {
+                    "Actual_CLV": 133.56,
+                    "Predicted_CLV": 116.59
+                },
+                {
+                    "Actual_CLV": 236.26,
+                    "Predicted_CLV": 260.76
+                },
+                {
+                    "Actual_CLV": 160.35,
+                    "Predicted_CLV": 202.91
+                },
+                {
+                    "Actual_CLV": 196.13,
+                    "Predicted_CLV": 215.08
+                },
+                {
+                    "Actual_CLV": 432.2,
+                    "Predicted_CLV": 396.13
+                },
+                {
+                    "Actual_CLV": 712.52,
+                    "Predicted_CLV": 611.37
+                },
+                {
+                    "Actual_CLV": 551.04,
+                    "Predicted_CLV": 758.63
+                },
+                {
+                    "Actual_CLV": 344.15,
+                    "Predicted_CLV": 444.97
+                },
+                {
+                    "Actual_CLV": 475.86,
+                    "Predicted_CLV": 453.74
+                },
+                {
+                    "Actual_CLV": 300.42,
+                    "Predicted_CLV": 279.95
+                },
+                {
+                    "Actual_CLV": 701.23,
+                    "Predicted_CLV": 605.7
+                },
+                {
+                    "Actual_CLV": 1247.69,
+                    "Predicted_CLV": 1275.62
+                },
+                {
+                    "Actual_CLV": 3200.29,
+                    "Predicted_CLV": 2700.77
+                },
+                {
+                    "Actual_CLV": 358.56,
+                    "Predicted_CLV": 388.76
+                },
+                {
+                    "Actual_CLV": 950.57,
+                    "Predicted_CLV": 772.0
+                },
+                {
+                    "Actual_CLV": 339.6,
+                    "Predicted_CLV": 388.76
+                },
+                {
+                    "Actual_CLV": 3247.92,
+                    "Predicted_CLV": 2998.56
+                },
+                {
+                    "Actual_CLV": 427.64,
+                    "Predicted_CLV": 403.47
+                },
+                {
+                    "Actual_CLV": 1133.85,
+                    "Predicted_CLV": 1104.16
+                },
+                {
+                    "Actual_CLV": 242.35,
+                    "Predicted_CLV": 257.96
+                },
+                {
+                    "Actual_CLV": 2657.78,
+                    "Predicted_CLV": 2947.85
+                },
+                {
+                    "Actual_CLV": 1607.82,
+                    "Predicted_CLV": 1238.34
+                },
+                {
+                    "Actual_CLV": 5976.79,
+                    "Predicted_CLV": 5054.1
+                },
+                {
+                    "Actual_CLV": 270.54,
+                    "Predicted_CLV": 342.42
+                },
+                {
+                    "Actual_CLV": 6566.6,
+                    "Predicted_CLV": 6783.96
+                },
+                {
+                    "Actual_CLV": 585.12,
+                    "Predicted_CLV": 564.23
+                },
+                {
+                    "Actual_CLV": 1252.33,
+                    "Predicted_CLV": 1428.76
+                },
+                {
+                    "Actual_CLV": 1802.23,
+                    "Predicted_CLV": 2219.24
+                },
+                {
+                    "Actual_CLV": 18316.83,
+                    "Predicted_CLV": 16579.07
+                },
+                {
+                    "Actual_CLV": 1098.43,
+                    "Predicted_CLV": 1405.24
+                },
+                {
+                    "Actual_CLV": 1735.83,
+                    "Predicted_CLV": 1662.27
+                },
+                {
+                    "Actual_CLV": 1892.41,
+                    "Predicted_CLV": 1553.77
+                },
+                {
+                    "Actual_CLV": 1013.04,
+                    "Predicted_CLV": 904.25
+                },
+                {
+                    "Actual_CLV": 834.71,
+                    "Predicted_CLV": 768.75
+                },
+                {
+                    "Actual_CLV": 25.5,
+                    "Predicted_CLV": 63.63
+                },
+                {
+                    "Actual_CLV": 1953.27,
+                    "Predicted_CLV": 1799.36
+                },
+                {
+                    "Actual_CLV": 562.91,
+                    "Predicted_CLV": 662.12
+                },
+                {
+                    "Actual_CLV": 3717.15,
+                    "Predicted_CLV": 4614.81
+                },
+                {
+                    "Actual_CLV": 573.22,
+                    "Predicted_CLV": 551.68
+                },
+                {
+                    "Actual_CLV": 4780.79,
+                    "Predicted_CLV": 3934.75
+                },
+                {
+                    "Actual_CLV": 6620.39,
+                    "Predicted_CLV": 6057.48
+                },
+                {
+                    "Actual_CLV": 84.3,
+                    "Predicted_CLV": 84.01
+                },
+                {
+                    "Actual_CLV": 880.32,
+                    "Predicted_CLV": 818.21
+                },
+                {
+                    "Actual_CLV": 208.25,
+                    "Predicted_CLV": 226.13
+                },
+                {
+                    "Actual_CLV": 901.95,
+                    "Predicted_CLV": 896.2
+                },
+                {
+                    "Actual_CLV": 400.32,
+                    "Predicted_CLV": 330.87
+                },
+                {
+                    "Actual_CLV": 1401.42,
+                    "Predicted_CLV": 1353.79
+                },
+                {
+                    "Actual_CLV": 280.55,
+                    "Predicted_CLV": 274.08
+                },
+                {
+                    "Actual_CLV": 2872.23,
+                    "Predicted_CLV": 2633.36
+                },
+                {
+                    "Actual_CLV": 1444.48,
+                    "Predicted_CLV": 1342.98
+                },
+                {
+                    "Actual_CLV": 122.75,
+                    "Predicted_CLV": 116.59
+                },
+                {
+                    "Actual_CLV": 2617.53,
+                    "Predicted_CLV": 2712.06
+                },
+                {
+                    "Actual_CLV": 1842.14,
+                    "Predicted_CLV": 1751.05
+                },
+                {
+                    "Actual_CLV": 581.64,
+                    "Predicted_CLV": 598.85
+                },
+                {
+                    "Actual_CLV": 8507.13,
+                    "Predicted_CLV": 6312.77
+                },
+                {
+                    "Actual_CLV": 254.03,
+                    "Predicted_CLV": 287.42
+                },
+                {
+                    "Actual_CLV": 1153.5,
+                    "Predicted_CLV": 1117.42
+                },
+                {
+                    "Actual_CLV": 377.33,
+                    "Predicted_CLV": 311.87
+                },
+                {
+                    "Actual_CLV": 2965.69,
+                    "Predicted_CLV": 2860.09
+                },
+                {
+                    "Actual_CLV": 112.75,
+                    "Predicted_CLV": 116.59
+                },
+                {
+                    "Actual_CLV": 205.3,
+                    "Predicted_CLV": 256.59
+                },
+                {
+                    "Actual_CLV": 6155.55,
+                    "Predicted_CLV": 4975.04
+                },
+                {
+                    "Actual_CLV": 21279.29,
+                    "Predicted_CLV": 14169.44
+                },
+                {
+                    "Actual_CLV": 1706.88,
+                    "Predicted_CLV": 1320.35
+                },
+                {
+                    "Actual_CLV": 325.1,
+                    "Predicted_CLV": 299.37
+                }
+            ]
+        }
+    },
+    "anomaly_detection": {
+        "model_name": "Isolation Forest (100 Trees, 5% Contamination)",
+        "total_customers": 4338,
+        "normal_customers": 4121,
+        "anomalous_customers": 217,
+        "anomaly_percentage": 5.0,
+        "top_anomalies": [
+            {
+                "CustomerID": 18102.0,
+                "SegmentName": "Champions",
+                "Recency": 1,
+                "Frequency": 60,
+                "Monetary": 259657.3,
+                "AverageOrderValue": 4327.621666666667,
+                "Anomaly_Score": -0.1783
+            },
+            {
+                "CustomerID": 14646.0,
+                "SegmentName": "Champions",
+                "Recency": 2,
+                "Frequency": 73,
+                "Monetary": 280206.02,
+                "AverageOrderValue": 3838.4386301369864,
+                "Anomaly_Score": -0.172
+            },
+            {
+                "CustomerID": 17450.0,
+                "SegmentName": "Champions",
+                "Recency": 8,
+                "Frequency": 46,
+                "Monetary": 194390.79,
+                "AverageOrderValue": 4225.886739130435,
+                "Anomaly_Score": -0.1576
+            },
+            {
+                "CustomerID": 16446.0,
+                "SegmentName": "Champions",
+                "Recency": 1,
+                "Frequency": 2,
+                "Monetary": 168472.5,
+                "AverageOrderValue": 84236.25,
+                "Anomaly_Score": -0.1545
+            },
+            {
+                "CustomerID": 17511.0,
+                "SegmentName": "Champions",
+                "Recency": 3,
+                "Frequency": 31,
+                "Monetary": 91062.38,
+                "AverageOrderValue": 2937.496129032258,
+                "Anomaly_Score": -0.1536
+            },
+            {
+                "CustomerID": 14911.0,
+                "SegmentName": "Champions",
+                "Recency": 1,
+                "Frequency": 201,
+                "Monetary": 143711.17,
+                "AverageOrderValue": 714.980945273632,
+                "Anomaly_Score": -0.1498
+            },
+            {
+                "CustomerID": 14156.0,
+                "SegmentName": "Champions",
+                "Recency": 10,
+                "Frequency": 55,
+                "Monetary": 117210.08,
+                "AverageOrderValue": 2131.0923636363636,
+                "Anomaly_Score": -0.1493
+            },
+            {
+                "CustomerID": 17949.0,
+                "SegmentName": "Champions",
+                "Recency": 1,
+                "Frequency": 45,
+                "Monetary": 58510.48,
+                "AverageOrderValue": 1300.232888888889,
+                "Anomaly_Score": -0.1456
+            },
+            {
+                "CustomerID": 12748.0,
+                "SegmentName": "Champions",
+                "Recency": 1,
+                "Frequency": 209,
+                "Monetary": 33053.19,
+                "AverageOrderValue": 158.14923444976077,
+                "Anomaly_Score": -0.1436
+            },
+            {
+                "CustomerID": 16684.0,
+                "SegmentName": "Champions",
+                "Recency": 4,
+                "Frequency": 28,
+                "Monetary": 66653.56,
+                "AverageOrderValue": 2380.4842857142858,
+                "Anomaly_Score": -0.142
+            },
+            {
+                "CustomerID": 15311.0,
+                "SegmentName": "Champions",
+                "Recency": 1,
+                "Frequency": 91,
+                "Monetary": 60632.75,
+                "AverageOrderValue": 666.2939560439561,
+                "Anomaly_Score": -0.1367
+            },
+            {
+                "CustomerID": 14096.0,
+                "SegmentName": "Champions",
+                "Recency": 4,
+                "Frequency": 17,
+                "Monetary": 65164.79,
+                "AverageOrderValue": 3833.2229411764706,
+                "Anomaly_Score": -0.1349
+            },
+            {
+                "CustomerID": 12415.0,
+                "SegmentName": "Champions",
+                "Recency": 24,
+                "Frequency": 21,
+                "Monetary": 124914.53,
+                "AverageOrderValue": 5948.310952380953,
+                "Anomaly_Score": -0.1339
+            },
+            {
+                "CustomerID": 15769.0,
+                "SegmentName": "Champions",
+                "Recency": 7,
+                "Frequency": 26,
+                "Monetary": 56252.72,
+                "AverageOrderValue": 2163.566153846154,
+                "Anomaly_Score": -0.1338
+            },
+            {
+                "CustomerID": 13694.0,
+                "SegmentName": "Champions",
+                "Recency": 4,
+                "Frequency": 50,
+                "Monetary": 65039.62,
+                "AverageOrderValue": 1300.7924,
+                "Anomaly_Score": -0.1324
+            }
+        ]
+    },
+    "customer_lookalikes": {
+        "14646": [
+            {
+                "Similar_CustomerID": 17511,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9961,
+                "Monetary": 91062.38
+            },
+            {
+                "Similar_CustomerID": 14156,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9921,
+                "Monetary": 117210.08
+            },
+            {
+                "Similar_CustomerID": 13694,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9912,
+                "Monetary": 65039.62
+            },
+            {
+                "Similar_CustomerID": 14031,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9872,
+                "Monetary": 17286.86
+            },
+            {
+                "Similar_CustomerID": 16684,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9861,
+                "Monetary": 66653.56
+            }
+        ],
+        "18102": [
+            {
+                "Similar_CustomerID": 16684,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9985,
+                "Monetary": 66653.56
+            },
+            {
+                "Similar_CustomerID": 17450,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9903,
+                "Monetary": 194390.79
+            },
+            {
+                "Similar_CustomerID": 17404,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9886,
+                "Monetary": 31906.82
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9876,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 14062,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9862,
+                "Monetary": 10464.85
+            }
+        ],
+        "17450": [
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9941,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 16684,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9926,
+                "Monetary": 66653.56
+            },
+            {
+                "Similar_CustomerID": 14680,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9924,
+                "Monetary": 28754.11
+            },
+            {
+                "Similar_CustomerID": 18102,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9903,
+                "Monetary": 259657.3
+            },
+            {
+                "Similar_CustomerID": 12731,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9847,
+                "Monetary": 18895.91
+            }
+        ],
+        "16446": [
+            {
+                "Similar_CustomerID": 16000,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9826,
+                "Monetary": 12393.7
+            },
+            {
+                "Similar_CustomerID": 12798,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9701,
+                "Monetary": 6977.04
+            },
+            {
+                "Similar_CustomerID": 12557,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9566,
+                "Monetary": 11990.96
+            },
+            {
+                "Similar_CustomerID": 18259,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9427,
+                "Monetary": 2338.6
+            },
+            {
+                "Similar_CustomerID": 13868,
+                "SegmentName": "Loyal Customers",
+                "Cosine_Similarity": 0.9349,
+                "Monetary": 3192.54
+            }
+        ],
+        "14911": [
+            {
+                "Similar_CustomerID": 13089,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9988,
+                "Monetary": 58762.08
+            },
+            {
+                "Similar_CustomerID": 15311,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9959,
+                "Monetary": 60632.75
+            },
+            {
+                "Similar_CustomerID": 15039,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 19766.59
+            },
+            {
+                "Similar_CustomerID": 12921,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9927,
+                "Monetary": 16587.09
+            },
+            {
+                "Similar_CustomerID": 16133,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9904,
+                "Monetary": 14589.04
+            }
+        ],
+        "12415": [
+            {
+                "Similar_CustomerID": 13340,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9938,
+                "Monetary": 10736.48
+            },
+            {
+                "Similar_CustomerID": 14088,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9909,
+                "Monetary": 50491.81
+            },
+            {
+                "Similar_CustomerID": 12678,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9891,
+                "Monetary": 17628.46
+            },
+            {
+                "Similar_CustomerID": 12731,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9882,
+                "Monetary": 18895.91
+            },
+            {
+                "Similar_CustomerID": 15505,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9862,
+                "Monetary": 3610.96
+            }
+        ],
+        "14156": [
+            {
+                "Similar_CustomerID": 14646,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9921,
+                "Monetary": 280206.02
+            },
+            {
+                "Similar_CustomerID": 14298,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9919,
+                "Monetary": 51527.3
+            },
+            {
+                "Similar_CustomerID": 12540,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9912,
+                "Monetary": 13400.24
+            },
+            {
+                "Similar_CustomerID": 13694,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9896,
+                "Monetary": 65039.62
+            },
+            {
+                "Similar_CustomerID": 15513,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9876,
+                "Monetary": 14758.22
+            }
+        ],
+        "17511": [
+            {
+                "Similar_CustomerID": 14646,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9961,
+                "Monetary": 280206.02
+            },
+            {
+                "Similar_CustomerID": 15502,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9869,
+                "Monetary": 10384.93
+            },
+            {
+                "Similar_CustomerID": 15251,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9868,
+                "Monetary": 10484.99
+            },
+            {
+                "Similar_CustomerID": 16684,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9864,
+                "Monetary": 66653.56
+            },
+            {
+                "Similar_CustomerID": 17404,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9844,
+                "Monetary": 31906.82
+            }
+        ],
+        "16029": [
+            {
+                "Similar_CustomerID": 16422,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9819,
+                "Monetary": 34684.4
+            },
+            {
+                "Similar_CustomerID": 17061,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9748,
+                "Monetary": 5232.23
+            },
+            {
+                "Similar_CustomerID": 17669,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9708,
+                "Monetary": 3406.72
+            },
+            {
+                "Similar_CustomerID": 17381,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9673,
+                "Monetary": 20275.61
+            },
+            {
+                "Similar_CustomerID": 17819,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9668,
+                "Monetary": 3704.87
+            }
+        ],
+        "12346": [
+            {
+                "Similar_CustomerID": 15749,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9868,
+                "Monetary": 44534.3
+            },
+            {
+                "Similar_CustomerID": 15098,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9802,
+                "Monetary": 39916.5
+            },
+            {
+                "Similar_CustomerID": 18251,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9735,
+                "Monetary": 4314.72
+            },
+            {
+                "Similar_CustomerID": 12516,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9702,
+                "Monetary": 1312.06
+            },
+            {
+                "Similar_CustomerID": 14164,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9591,
+                "Monetary": 1631.77
+            }
+        ],
+        "16684": [
+            {
+                "Similar_CustomerID": 18102,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9985,
+                "Monetary": 259657.3
+            },
+            {
+                "Similar_CustomerID": 17404,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.993,
+                "Monetary": 31906.82
+            },
+            {
+                "Similar_CustomerID": 17450,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9926,
+                "Monetary": 194390.79
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9909,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 14062,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9905,
+                "Monetary": 10464.85
+            }
+        ],
+        "14096": [
+            {
+                "Similar_CustomerID": 13081,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9956,
+                "Monetary": 28337.38
+            },
+            {
+                "Similar_CustomerID": 14088,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9887,
+                "Monetary": 50491.81
+            },
+            {
+                "Similar_CustomerID": 15382,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9842,
+                "Monetary": 5955.71
+            },
+            {
+                "Similar_CustomerID": 17511,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9819,
+                "Monetary": 91062.38
+            },
+            {
+                "Similar_CustomerID": 17416,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.98,
+                "Monetary": 6893.42
+            }
+        ],
+        "13694": [
+            {
+                "Similar_CustomerID": 14031,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9917,
+                "Monetary": 17286.86
+            },
+            {
+                "Similar_CustomerID": 14646,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9912,
+                "Monetary": 280206.02
+            },
+            {
+                "Similar_CustomerID": 14156,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9896,
+                "Monetary": 117210.08
+            },
+            {
+                "Similar_CustomerID": 14298,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9887,
+                "Monetary": 51527.3
+            },
+            {
+                "Similar_CustomerID": 12709,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9875,
+                "Monetary": 9706.52
+            }
+        ],
+        "15311": [
+            {
+                "Similar_CustomerID": 13089,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9969,
+                "Monetary": 58762.08
+            },
+            {
+                "Similar_CustomerID": 16133,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 14589.04
+            },
+            {
+                "Similar_CustomerID": 14911,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9959,
+                "Monetary": 143711.17
+            },
+            {
+                "Similar_CustomerID": 13408,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9951,
+                "Monetary": 28117.04
+            },
+            {
+                "Similar_CustomerID": 13319,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9949,
+                "Monetary": 10845.55
+            }
+        ],
+        "13089": [
+            {
+                "Similar_CustomerID": 14911,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9988,
+                "Monetary": 143711.17
+            },
+            {
+                "Similar_CustomerID": 12921,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.997,
+                "Monetary": 16587.09
+            },
+            {
+                "Similar_CustomerID": 15311,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9969,
+                "Monetary": 60632.75
+            },
+            {
+                "Similar_CustomerID": 15039,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.995,
+                "Monetary": 19766.59
+            },
+            {
+                "Similar_CustomerID": 15615,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9942,
+                "Monetary": 10399.74
+            }
+        ],
+        "17949": [
+            {
+                "Similar_CustomerID": 17389,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9953,
+                "Monetary": 31833.68
+            },
+            {
+                "Similar_CustomerID": 13777,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9938,
+                "Monetary": 25977.16
+            },
+            {
+                "Similar_CustomerID": 17857,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9921,
+                "Monetary": 26879.04
+            },
+            {
+                "Similar_CustomerID": 16013,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9896,
+                "Monetary": 37130.6
+            },
+            {
+                "Similar_CustomerID": 15061,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9851,
+                "Monetary": 54534.14
+            }
+        ],
+        "15769": [
+            {
+                "Similar_CustomerID": 14866,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9949,
+                "Monetary": 14389.9
+            },
+            {
+                "Similar_CustomerID": 14607,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9938,
+                "Monetary": 16209.5
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9912,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 15482,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9859,
+                "Monetary": 10879.76
+            },
+            {
+                "Similar_CustomerID": 17857,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9858,
+                "Monetary": 26879.04
+            }
+        ],
+        "15061": [
+            {
+                "Similar_CustomerID": 17381,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 20275.61
+            },
+            {
+                "Similar_CustomerID": 13881,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.99,
+                "Monetary": 17159.52
+            },
+            {
+                "Similar_CustomerID": 16013,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9883,
+                "Monetary": 37130.6
+            },
+            {
+                "Similar_CustomerID": 12901,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9856,
+                "Monetary": 17654.54
+            },
+            {
+                "Similar_CustomerID": 17949,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9851,
+                "Monetary": 58510.48
+            }
+        ],
+        "14298": [
+            {
+                "Similar_CustomerID": 12681,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9943,
+                "Monetary": 13787.54
+            },
+            {
+                "Similar_CustomerID": 12540,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9941,
+                "Monetary": 13400.24
+            },
+            {
+                "Similar_CustomerID": 14156,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9919,
+                "Monetary": 117210.08
+            },
+            {
+                "Similar_CustomerID": 13488,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.991,
+                "Monetary": 8968.31
+            },
+            {
+                "Similar_CustomerID": 12757,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9909,
+                "Monetary": 7834.65
+            }
+        ],
+        "14088": [
+            {
+                "Similar_CustomerID": 13081,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9949,
+                "Monetary": 28337.38
+            },
+            {
+                "Similar_CustomerID": 12415,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9909,
+                "Monetary": 124914.53
+            },
+            {
+                "Similar_CustomerID": 14096,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9887,
+                "Monetary": 65164.79
+            },
+            {
+                "Similar_CustomerID": 12477,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9876,
+                "Monetary": 13219.74
+            },
+            {
+                "Similar_CustomerID": 17416,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9823,
+                "Monetary": 6893.42
+            }
+        ],
+        "15749": [
+            {
+                "Similar_CustomerID": 15098,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.988,
+                "Monetary": 39916.5
+            },
+            {
+                "Similar_CustomerID": 12346,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9868,
+                "Monetary": 77183.6
+            },
+            {
+                "Similar_CustomerID": 16182,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9642,
+                "Monetary": 6617.65
+            },
+            {
+                "Similar_CustomerID": 12435,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9585,
+                "Monetary": 7829.89
+            },
+            {
+                "Similar_CustomerID": 18251,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9494,
+                "Monetary": 4314.72
+            }
+        ],
+        "12931": [
+            {
+                "Similar_CustomerID": 17396,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9911,
+                "Monetary": 7330.8
+            },
+            {
+                "Similar_CustomerID": 14607,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9802,
+                "Monetary": 16209.5
+            },
+            {
+                "Similar_CustomerID": 14680,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9799,
+                "Monetary": 28754.11
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.979,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 15769,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9788,
+                "Monetary": 56252.72
+            }
+        ],
+        "17841": [
+            {
+                "Similar_CustomerID": 15039,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9906,
+                "Monetary": 19766.59
+            },
+            {
+                "Similar_CustomerID": 14667,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9903,
+                "Monetary": 9175.04
+            },
+            {
+                "Similar_CustomerID": 14911,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9903,
+                "Monetary": 143711.17
+            },
+            {
+                "Similar_CustomerID": 12748,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9897,
+                "Monetary": 33053.19
+            },
+            {
+                "Similar_CustomerID": 13018,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9877,
+                "Monetary": 7277.7
+            }
+        ],
+        "15098": [
+            {
+                "Similar_CustomerID": 15749,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.988,
+                "Monetary": 44534.3
+            },
+            {
+                "Similar_CustomerID": 12346,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9802,
+                "Monetary": 77183.6
+            },
+            {
+                "Similar_CustomerID": 18087,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9656,
+                "Monetary": 4055.72
+            },
+            {
+                "Similar_CustomerID": 16182,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9557,
+                "Monetary": 6617.65
+            },
+            {
+                "Similar_CustomerID": 12516,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.944,
+                "Monetary": 1312.06
+            }
+        ],
+        "13798": [
+            {
+                "Similar_CustomerID": 13078,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.997,
+                "Monetary": 12627.94
+            },
+            {
+                "Similar_CustomerID": 16525,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9955,
+                "Monetary": 13027.45
+            },
+            {
+                "Similar_CustomerID": 12471,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9934,
+                "Monetary": 19788.65
+            },
+            {
+                "Similar_CustomerID": 13767,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9933,
+                "Monetary": 17220.36
+            },
+            {
+                "Similar_CustomerID": 15290,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9915,
+                "Monetary": 7943.22
+            }
+        ],
+        "16013": [
+            {
+                "Similar_CustomerID": 12901,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9979,
+                "Monetary": 17654.54
+            },
+            {
+                "Similar_CustomerID": 17381,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9963,
+                "Monetary": 20275.61
+            },
+            {
+                "Similar_CustomerID": 17949,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9896,
+                "Monetary": 58510.48
+            },
+            {
+                "Similar_CustomerID": 15061,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9883,
+                "Monetary": 54534.14
+            },
+            {
+                "Similar_CustomerID": 13777,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9861,
+                "Monetary": 25977.16
+            }
+        ],
+        "16422": [
+            {
+                "Similar_CustomerID": 15465,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9877,
+                "Monetary": 7354.62
+            },
+            {
+                "Similar_CustomerID": 17381,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9859,
+                "Monetary": 20275.61
+            },
+            {
+                "Similar_CustomerID": 16839,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9829,
+                "Monetary": 16594.35
+            },
+            {
+                "Similar_CustomerID": 16029,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9819,
+                "Monetary": 80850.84
+            },
+            {
+                "Similar_CustomerID": 15061,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9798,
+                "Monetary": 54534.14
+            }
+        ],
+        "15838": [
+            {
+                "Similar_CustomerID": 14607,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9966,
+                "Monetary": 16209.5
+            },
+            {
+                "Similar_CustomerID": 15482,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 10879.76
+            },
+            {
+                "Similar_CustomerID": 17450,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9941,
+                "Monetary": 194390.79
+            },
+            {
+                "Similar_CustomerID": 15769,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9912,
+                "Monetary": 56252.72
+            },
+            {
+                "Similar_CustomerID": 16684,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9909,
+                "Monetary": 66653.56
+            }
+        ],
+        "12748": [
+            {
+                "Similar_CustomerID": 17811,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.995,
+                "Monetary": 7761.82
+            },
+            {
+                "Similar_CustomerID": 14606,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9946,
+                "Monetary": 12076.15
+            },
+            {
+                "Similar_CustomerID": 14527,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9933,
+                "Monetary": 8507.13
+            },
+            {
+                "Similar_CustomerID": 17841,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9897,
+                "Monetary": 40519.84
+            },
+            {
+                "Similar_CustomerID": 18118,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9863,
+                "Monetary": 5625.08
+            }
+        ],
+        "17404": [
+            {
+                "Similar_CustomerID": 16684,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.993,
+                "Monetary": 66653.56
+            },
+            {
+                "Similar_CustomerID": 14258,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9926,
+                "Monetary": 12669.98
+            },
+            {
+                "Similar_CustomerID": 15251,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9908,
+                "Monetary": 10484.99
+            },
+            {
+                "Similar_CustomerID": 18102,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9886,
+                "Monetary": 259657.3
+            },
+            {
+                "Similar_CustomerID": 17511,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9844,
+                "Monetary": 91062.38
+            }
+        ],
+        "17389": [
+            {
+                "Similar_CustomerID": 13777,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9985,
+                "Monetary": 25977.16
+            },
+            {
+                "Similar_CustomerID": 17949,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9953,
+                "Monetary": 58510.48
+            },
+            {
+                "Similar_CustomerID": 14051,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9946,
+                "Monetary": 15610.39
+            },
+            {
+                "Similar_CustomerID": 13881,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9905,
+                "Monetary": 17159.52
+            },
+            {
+                "Similar_CustomerID": 16013,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.985,
+                "Monetary": 37130.6
+            }
+        ],
+        "13098": [
+            {
+                "Similar_CustomerID": 16705,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 14034.99
+            },
+            {
+                "Similar_CustomerID": 12471,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9927,
+                "Monetary": 19788.65
+            },
+            {
+                "Similar_CustomerID": 13881,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9918,
+                "Monetary": 17159.52
+            },
+            {
+                "Similar_CustomerID": 17675,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9895,
+                "Monetary": 20374.28
+            },
+            {
+                "Similar_CustomerID": 13001,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9893,
+                "Monetary": 9785.97
+            }
+        ],
+        "14680": [
+            {
+                "Similar_CustomerID": 12731,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 18895.91
+            },
+            {
+                "Similar_CustomerID": 17450,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9924,
+                "Monetary": 194390.79
+            },
+            {
+                "Similar_CustomerID": 12678,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9912,
+                "Monetary": 17628.46
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9906,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 14607,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9851,
+                "Monetary": 16209.5
+            }
+        ],
+        "13081": [
+            {
+                "Similar_CustomerID": 14096,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9956,
+                "Monetary": 65164.79
+            },
+            {
+                "Similar_CustomerID": 14088,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9949,
+                "Monetary": 50491.81
+            },
+            {
+                "Similar_CustomerID": 17416,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9918,
+                "Monetary": 6893.42
+            },
+            {
+                "Similar_CustomerID": 12472,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9885,
+                "Monetary": 6572.11
+            },
+            {
+                "Similar_CustomerID": 14936,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9881,
+                "Monetary": 8137.02
+            }
+        ],
+        "13408": [
+            {
+                "Similar_CustomerID": 16133,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9972,
+                "Monetary": 14589.04
+            },
+            {
+                "Similar_CustomerID": 12682,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 12279.82
+            },
+            {
+                "Similar_CustomerID": 15311,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9951,
+                "Monetary": 60632.75
+            },
+            {
+                "Similar_CustomerID": 13319,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9942,
+                "Monetary": 10845.55
+            },
+            {
+                "Similar_CustomerID": 13089,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9915,
+                "Monetary": 58762.08
+            }
+        ],
+        "17857": [
+            {
+                "Similar_CustomerID": 17949,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9921,
+                "Monetary": 58510.48
+            },
+            {
+                "Similar_CustomerID": 16333,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9875,
+                "Monetary": 26626.8
+            },
+            {
+                "Similar_CustomerID": 15769,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9858,
+                "Monetary": 56252.72
+            },
+            {
+                "Similar_CustomerID": 14866,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9817,
+                "Monetary": 14389.9
+            },
+            {
+                "Similar_CustomerID": 17389,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9782,
+                "Monetary": 31833.68
+            }
+        ],
+        "16333": [
+            {
+                "Similar_CustomerID": 17857,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9875,
+                "Monetary": 26879.04
+            },
+            {
+                "Similar_CustomerID": 16656,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.98,
+                "Monetary": 8625.8
+            },
+            {
+                "Similar_CustomerID": 15769,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9766,
+                "Monetary": 56252.72
+            },
+            {
+                "Similar_CustomerID": 13629,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9719,
+                "Monetary": 7792.36
+            },
+            {
+                "Similar_CustomerID": 17133,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9709,
+                "Monetary": 4892.24
+            }
+        ],
+        "13777": [
+            {
+                "Similar_CustomerID": 17389,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9985,
+                "Monetary": 31833.68
+            },
+            {
+                "Similar_CustomerID": 14051,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9948,
+                "Monetary": 15610.39
+            },
+            {
+                "Similar_CustomerID": 17949,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9938,
+                "Monetary": 58510.48
+            },
+            {
+                "Similar_CustomerID": 12989,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9888,
+                "Monetary": 6924.11
+            },
+            {
+                "Similar_CustomerID": 16013,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9861,
+                "Monetary": 37130.6
+            }
+        ],
+        "12753": [
+            {
+                "Similar_CustomerID": 13316,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9953,
+                "Monetary": 5732.93
+            },
+            {
+                "Similar_CustomerID": 16126,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9913,
+                "Monetary": 6287.77
+            },
+            {
+                "Similar_CustomerID": 12477,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.991,
+                "Monetary": 13219.74
+            },
+            {
+                "Similar_CustomerID": 12744,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9847,
+                "Monetary": 21279.29
+            },
+            {
+                "Similar_CustomerID": 12432,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9831,
+                "Monetary": 5059.32
+            }
+        ],
+        "12744": [
+            {
+                "Similar_CustomerID": 13340,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9937,
+                "Monetary": 10736.48
+            },
+            {
+                "Similar_CustomerID": 16258,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9928,
+                "Monetary": 5203.51
+            },
+            {
+                "Similar_CustomerID": 12432,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9912,
+                "Monetary": 5059.32
+            },
+            {
+                "Similar_CustomerID": 14844,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.99,
+                "Monetary": 3189.81
+            },
+            {
+                "Similar_CustomerID": 18079,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9885,
+                "Monetary": 3613.15
+            }
+        ],
+        "16210": [
+            {
+                "Similar_CustomerID": 13881,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9937,
+                "Monetary": 17159.52
+            },
+            {
+                "Similar_CustomerID": 13098,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9891,
+                "Monetary": 28882.44
+            },
+            {
+                "Similar_CustomerID": 14062,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.988,
+                "Monetary": 10464.85
+            },
+            {
+                "Similar_CustomerID": 18102,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9843,
+                "Monetary": 259657.3
+            },
+            {
+                "Similar_CustomerID": 17389,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9835,
+                "Monetary": 31833.68
+            }
+        ],
+        "17675": [
+            {
+                "Similar_CustomerID": 17428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9995,
+                "Monetary": 17256.85
+            },
+            {
+                "Similar_CustomerID": 17677,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 16345.38
+            },
+            {
+                "Similar_CustomerID": 16779,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9974,
+                "Monetary": 10611.72
+            },
+            {
+                "Similar_CustomerID": 12471,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9966,
+                "Monetary": 19788.65
+            },
+            {
+                "Similar_CustomerID": 15159,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9957,
+                "Monetary": 18641.01
+            }
+        ],
+        "17381": [
+            {
+                "Similar_CustomerID": 12901,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.998,
+                "Monetary": 17654.54
+            },
+            {
+                "Similar_CustomerID": 16013,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9963,
+                "Monetary": 37130.6
+            },
+            {
+                "Similar_CustomerID": 15061,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 54534.14
+            },
+            {
+                "Similar_CustomerID": 17809,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9868,
+                "Monetary": 5411.91
+            },
+            {
+                "Similar_CustomerID": 16422,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9859,
+                "Monetary": 34684.4
+            }
+        ],
+        "12471": [
+            {
+                "Similar_CustomerID": 17677,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 16345.38
+            },
+            {
+                "Similar_CustomerID": 17675,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9966,
+                "Monetary": 20374.28
+            },
+            {
+                "Similar_CustomerID": 13078,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9953,
+                "Monetary": 12627.94
+            },
+            {
+                "Similar_CustomerID": 15290,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 7943.22
+            },
+            {
+                "Similar_CustomerID": 17428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9938,
+                "Monetary": 17256.85
+            }
+        ],
+        "15039": [
+            {
+                "Similar_CustomerID": 12921,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9967,
+                "Monetary": 16587.09
+            },
+            {
+                "Similar_CustomerID": 13089,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.995,
+                "Monetary": 58762.08
+            },
+            {
+                "Similar_CustomerID": 14667,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9946,
+                "Monetary": 9175.04
+            },
+            {
+                "Similar_CustomerID": 14911,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 143711.17
+            },
+            {
+                "Similar_CustomerID": 15615,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9927,
+                "Monetary": 10399.74
+            }
+        ],
+        "12731": [
+            {
+                "Similar_CustomerID": 12678,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 17628.46
+            },
+            {
+                "Similar_CustomerID": 14680,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 28754.11
+            },
+            {
+                "Similar_CustomerID": 12415,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9882,
+                "Monetary": 124914.53
+            },
+            {
+                "Similar_CustomerID": 17450,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9847,
+                "Monetary": 194390.79
+            },
+            {
+                "Similar_CustomerID": 13381,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9845,
+                "Monetary": 3639.31
+            }
+        ],
+        "15159": [
+            {
+                "Similar_CustomerID": 15856,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9984,
+                "Monetary": 16143.64
+            },
+            {
+                "Similar_CustomerID": 14194,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9982,
+                "Monetary": 11349.52
+            },
+            {
+                "Similar_CustomerID": 15498,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9979,
+                "Monetary": 13316.4
+            },
+            {
+                "Similar_CustomerID": 17428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9961,
+                "Monetary": 17256.85
+            },
+            {
+                "Similar_CustomerID": 17706,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9961,
+                "Monetary": 10504.49
+            }
+        ],
+        "12901": [
+            {
+                "Similar_CustomerID": 17381,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.998,
+                "Monetary": 20275.61
+            },
+            {
+                "Similar_CustomerID": 16013,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9979,
+                "Monetary": 37130.6
+            },
+            {
+                "Similar_CustomerID": 15061,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9856,
+                "Monetary": 54534.14
+            },
+            {
+                "Similar_CustomerID": 15465,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9842,
+                "Monetary": 7354.62
+            },
+            {
+                "Similar_CustomerID": 17809,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9833,
+                "Monetary": 5411.91
+            }
+        ],
+        "12678": [
+            {
+                "Similar_CustomerID": 17509,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9948,
+                "Monetary": 6083.64
+            },
+            {
+                "Similar_CustomerID": 16131,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 3506.54
+            },
+            {
+                "Similar_CustomerID": 12731,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 18895.91
+            },
+            {
+                "Similar_CustomerID": 16652,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.993,
+                "Monetary": 6773.97
+            },
+            {
+                "Similar_CustomerID": 14680,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9912,
+                "Monetary": 28754.11
+            }
+        ],
+        "14031": [
+            {
+                "Similar_CustomerID": 13090,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9967,
+                "Monetary": 8910.82
+            },
+            {
+                "Similar_CustomerID": 12709,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9938,
+                "Monetary": 9706.52
+            },
+            {
+                "Similar_CustomerID": 14733,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9924,
+                "Monetary": 9585.91
+            },
+            {
+                "Similar_CustomerID": 13694,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9917,
+                "Monetary": 65039.62
+            },
+            {
+                "Similar_CustomerID": 13881,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9913,
+                "Monetary": 17159.52
+            }
+        ],
+        "17428": [
+            {
+                "Similar_CustomerID": 17675,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9995,
+                "Monetary": 20374.28
+            },
+            {
+                "Similar_CustomerID": 16779,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 10611.72
+            },
+            {
+                "Similar_CustomerID": 17677,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9965,
+                "Monetary": 16345.38
+            },
+            {
+                "Similar_CustomerID": 12621,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9965,
+                "Monetary": 13689.67
+            },
+            {
+                "Similar_CustomerID": 16523,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9962,
+                "Monetary": 9418.47
+            }
+        ],
+        "13767": [
+            {
+                "Similar_CustomerID": 15189,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9955,
+                "Monetary": 16225.39
+            },
+            {
+                "Similar_CustomerID": 16525,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9949,
+                "Monetary": 13027.45
+            },
+            {
+                "Similar_CustomerID": 13798,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9933,
+                "Monetary": 37153.85
+            },
+            {
+                "Similar_CustomerID": 13078,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9915,
+                "Monetary": 12627.94
+            },
+            {
+                "Similar_CustomerID": 16353,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9883,
+                "Monetary": 6675.71
+            }
+        ],
+        "13881": [
+            {
+                "Similar_CustomerID": 16210,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9937,
+                "Monetary": 21086.3
+            },
+            {
+                "Similar_CustomerID": 13098,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9918,
+                "Monetary": 28882.44
+            },
+            {
+                "Similar_CustomerID": 14031,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9913,
+                "Monetary": 17286.86
+            },
+            {
+                "Similar_CustomerID": 17389,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9905,
+                "Monetary": 31833.68
+            },
+            {
+                "Similar_CustomerID": 15061,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.99,
+                "Monetary": 54534.14
+            }
+        ],
+        "16839": [
+            {
+                "Similar_CustomerID": 18172,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9955,
+                "Monetary": 7561.68
+            },
+            {
+                "Similar_CustomerID": 18229,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.993,
+                "Monetary": 7276.9
+            },
+            {
+                "Similar_CustomerID": 13576,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.993,
+                "Monetary": 6717.34
+            },
+            {
+                "Similar_CustomerID": 12921,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9918,
+                "Monetary": 16587.09
+            },
+            {
+                "Similar_CustomerID": 13408,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9896,
+                "Monetary": 28117.04
+            }
+        ],
+        "12921": [
+            {
+                "Similar_CustomerID": 15615,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 10399.74
+            },
+            {
+                "Similar_CustomerID": 13089,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.997,
+                "Monetary": 58762.08
+            },
+            {
+                "Similar_CustomerID": 15039,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9967,
+                "Monetary": 19766.59
+            },
+            {
+                "Similar_CustomerID": 16133,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9933,
+                "Monetary": 14589.04
+            },
+            {
+                "Similar_CustomerID": 18172,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9932,
+                "Monetary": 7561.68
+            }
+        ],
+        "17677": [
+            {
+                "Similar_CustomerID": 12471,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 19788.65
+            },
+            {
+                "Similar_CustomerID": 17675,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 20374.28
+            },
+            {
+                "Similar_CustomerID": 16779,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9977,
+                "Monetary": 10611.72
+            },
+            {
+                "Similar_CustomerID": 17428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9965,
+                "Monetary": 17256.85
+            },
+            {
+                "Similar_CustomerID": 16523,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9962,
+                "Monetary": 9418.47
+            }
+        ],
+        "15189": [
+            {
+                "Similar_CustomerID": 13767,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9955,
+                "Monetary": 17220.36
+            },
+            {
+                "Similar_CustomerID": 16525,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 13027.45
+            },
+            {
+                "Similar_CustomerID": 17017,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9928,
+                "Monetary": 8694.26
+            },
+            {
+                "Similar_CustomerID": 13078,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9926,
+                "Monetary": 12627.94
+            },
+            {
+                "Similar_CustomerID": 16353,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9924,
+                "Monetary": 6675.71
+            }
+        ],
+        "14607": [
+            {
+                "Similar_CustomerID": 15482,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9972,
+                "Monetary": 10879.76
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9966,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 14866,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 14389.9
+            },
+            {
+                "Similar_CustomerID": 15769,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9938,
+                "Monetary": 56252.72
+            },
+            {
+                "Similar_CustomerID": 13629,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9898,
+                "Monetary": 7792.36
+            }
+        ],
+        "15856": [
+            {
+                "Similar_CustomerID": 14194,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9992,
+                "Monetary": 11349.52
+            },
+            {
+                "Similar_CustomerID": 15159,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9984,
+                "Monetary": 18641.01
+            },
+            {
+                "Similar_CustomerID": 14895,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9971,
+                "Monetary": 11138.71
+            },
+            {
+                "Similar_CustomerID": 15498,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 13316.4
+            },
+            {
+                "Similar_CustomerID": 17706,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 10504.49
+            }
+        ],
+        "14051": [
+            {
+                "Similar_CustomerID": 13777,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9948,
+                "Monetary": 25977.16
+            },
+            {
+                "Similar_CustomerID": 17389,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9946,
+                "Monetary": 31833.68
+            },
+            {
+                "Similar_CustomerID": 12989,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 6924.11
+            },
+            {
+                "Similar_CustomerID": 16525,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9907,
+                "Monetary": 13027.45
+            },
+            {
+                "Similar_CustomerID": 13113,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.989,
+                "Monetary": 12245.96
+            }
+        ],
+        "15513": [
+            {
+                "Similar_CustomerID": 12779,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 3981.36
+            },
+            {
+                "Similar_CustomerID": 16843,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9943,
+                "Monetary": 10196.57
+            },
+            {
+                "Similar_CustomerID": 13327,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9923,
+                "Monetary": 3627.77
+            },
+            {
+                "Similar_CustomerID": 15125,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9919,
+                "Monetary": 11528.48
+            },
+            {
+                "Similar_CustomerID": 12540,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9914,
+                "Monetary": 13400.24
+            }
+        ],
+        "16133": [
+            {
+                "Similar_CustomerID": 12682,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9994,
+                "Monetary": 12279.82
+            },
+            {
+                "Similar_CustomerID": 13319,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9994,
+                "Monetary": 10845.55
+            },
+            {
+                "Similar_CustomerID": 13408,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9972,
+                "Monetary": 28117.04
+            },
+            {
+                "Similar_CustomerID": 15311,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 60632.75
+            },
+            {
+                "Similar_CustomerID": 15144,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9967,
+                "Monetary": 6580.44
+            }
+        ],
+        "14866": [
+            {
+                "Similar_CustomerID": 15769,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9949,
+                "Monetary": 56252.72
+            },
+            {
+                "Similar_CustomerID": 14607,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 16209.5
+            },
+            {
+                "Similar_CustomerID": 15482,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9904,
+                "Monetary": 10879.76
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9903,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 13629,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9835,
+                "Monetary": 7792.36
+            }
+        ],
+        "16705": [
+            {
+                "Similar_CustomerID": 12583,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9952,
+                "Monetary": 7281.38
+            },
+            {
+                "Similar_CustomerID": 14110,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 5683.15
+            },
+            {
+                "Similar_CustomerID": 13098,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 28882.44
+            },
+            {
+                "Similar_CustomerID": 13985,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9931,
+                "Monetary": 7060.13
+            },
+            {
+                "Similar_CustomerID": 17675,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9929,
+                "Monetary": 20374.28
+            }
+        ],
+        "12681": [
+            {
+                "Similar_CustomerID": 13871,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9959,
+                "Monetary": 6403.25
+            },
+            {
+                "Similar_CustomerID": 15044,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 7634.73
+            },
+            {
+                "Similar_CustomerID": 14298,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9943,
+                "Monetary": 51527.3
+            },
+            {
+                "Similar_CustomerID": 12540,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9931,
+                "Monetary": 13400.24
+            },
+            {
+                "Similar_CustomerID": 14895,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9931,
+                "Monetary": 11138.71
+            }
+        ],
+        "12621": [
+            {
+                "Similar_CustomerID": 17735,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9991,
+                "Monetary": 13110.02
+            },
+            {
+                "Similar_CustomerID": 12683,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9988,
+                "Monetary": 8476.57
+            },
+            {
+                "Similar_CustomerID": 17706,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9976,
+                "Monetary": 10504.49
+            },
+            {
+                "Similar_CustomerID": 15194,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 7616.53
+            },
+            {
+                "Similar_CustomerID": 17428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9965,
+                "Monetary": 17256.85
+            }
+        ],
+        "12540": [
+            {
+                "Similar_CustomerID": 13488,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9965,
+                "Monetary": 8968.31
+            },
+            {
+                "Similar_CustomerID": 12757,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 7834.65
+            },
+            {
+                "Similar_CustomerID": 12481,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9943,
+                "Monetary": 5579.82
+            },
+            {
+                "Similar_CustomerID": 14298,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9941,
+                "Monetary": 51527.3
+            },
+            {
+                "Similar_CustomerID": 12476,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9934,
+                "Monetary": 6816.42
+            }
+        ],
+        "12433": [
+            {
+                "Similar_CustomerID": 16873,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9932,
+                "Monetary": 7123.62
+            },
+            {
+                "Similar_CustomerID": 12766,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9882,
+                "Monetary": 6989.63
+            },
+            {
+                "Similar_CustomerID": 12749,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9845,
+                "Monetary": 4090.88
+            },
+            {
+                "Similar_CustomerID": 12429,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9776,
+                "Monetary": 3750.4
+            },
+            {
+                "Similar_CustomerID": 17593,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9772,
+                "Monetary": 3923.86
+            }
+        ],
+        "15498": [
+            {
+                "Similar_CustomerID": 15159,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9979,
+                "Monetary": 18641.01
+            },
+            {
+                "Similar_CustomerID": 14194,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 11349.52
+            },
+            {
+                "Similar_CustomerID": 15358,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.997,
+                "Monetary": 8347.2
+            },
+            {
+                "Similar_CustomerID": 15856,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 16143.64
+            },
+            {
+                "Similar_CustomerID": 16746,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9964,
+                "Monetary": 6680.11
+            }
+        ],
+        "12477": [
+            {
+                "Similar_CustomerID": 12432,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9933,
+                "Monetary": 5059.32
+            },
+            {
+                "Similar_CustomerID": 17107,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9924,
+                "Monetary": 10797.48
+            },
+            {
+                "Similar_CustomerID": 16258,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9917,
+                "Monetary": 5203.51
+            },
+            {
+                "Similar_CustomerID": 18079,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9911,
+                "Monetary": 3613.15
+            },
+            {
+                "Similar_CustomerID": 12753,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.991,
+                "Monetary": 21429.39
+            }
+        ],
+        "17735": [
+            {
+                "Similar_CustomerID": 12621,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9991,
+                "Monetary": 13689.67
+            },
+            {
+                "Similar_CustomerID": 17706,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9985,
+                "Monetary": 10504.49
+            },
+            {
+                "Similar_CustomerID": 12683,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9974,
+                "Monetary": 8476.57
+            },
+            {
+                "Similar_CustomerID": 15194,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 7616.53
+            },
+            {
+                "Similar_CustomerID": 13709,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9951,
+                "Monetary": 6307.65
+            }
+        ],
+        "16525": [
+            {
+                "Similar_CustomerID": 13078,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 12627.94
+            },
+            {
+                "Similar_CustomerID": 17017,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9975,
+                "Monetary": 8694.26
+            },
+            {
+                "Similar_CustomerID": 13113,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9965,
+                "Monetary": 12245.96
+            },
+            {
+                "Similar_CustomerID": 13798,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9955,
+                "Monetary": 37153.85
+            },
+            {
+                "Similar_CustomerID": 13767,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9949,
+                "Monetary": 17220.36
+            }
+        ],
+        "14258": [
+            {
+                "Similar_CustomerID": 17404,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9926,
+                "Monetary": 31906.82
+            },
+            {
+                "Similar_CustomerID": 15093,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9888,
+                "Monetary": 4597.02
+            },
+            {
+                "Similar_CustomerID": 15903,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9843,
+                "Monetary": 5126.76
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9825,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 14866,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9812,
+                "Monetary": 14389.9
+            }
+        ],
+        "13078": [
+            {
+                "Similar_CustomerID": 15290,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9983,
+                "Monetary": 7943.22
+            },
+            {
+                "Similar_CustomerID": 17017,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.998,
+                "Monetary": 8694.26
+            },
+            {
+                "Similar_CustomerID": 16525,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 13027.45
+            },
+            {
+                "Similar_CustomerID": 13798,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.997,
+                "Monetary": 37153.85
+            },
+            {
+                "Similar_CustomerID": 12471,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9953,
+                "Monetary": 19788.65
+            }
+        ],
+        "12536": [
+            {
+                "Similar_CustomerID": 12456,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9953,
+                "Monetary": 3181.04
+            },
+            {
+                "Similar_CustomerID": 12360,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9922,
+                "Monetary": 2662.06
+            },
+            {
+                "Similar_CustomerID": 13373,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9892,
+                "Monetary": 3312.25
+            },
+            {
+                "Similar_CustomerID": 14175,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9877,
+                "Monetary": 3222.3
+            },
+            {
+                "Similar_CustomerID": 15786,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9857,
+                "Monetary": 4919.0
+            }
+        ],
+        "15640": [
+            {
+                "Similar_CustomerID": 13001,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.998,
+                "Monetary": 9785.97
+            },
+            {
+                "Similar_CustomerID": 13458,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 9646.57
+            },
+            {
+                "Similar_CustomerID": 18055,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 6761.34
+            },
+            {
+                "Similar_CustomerID": 17706,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9942,
+                "Monetary": 10504.49
+            },
+            {
+                "Similar_CustomerID": 16265,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9942,
+                "Monetary": 5447.0
+            }
+        ],
+        "16000": [
+            {
+                "Similar_CustomerID": 12798,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9842,
+                "Monetary": 6977.04
+            },
+            {
+                "Similar_CustomerID": 16446,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9826,
+                "Monetary": 168472.5
+            },
+            {
+                "Similar_CustomerID": 12557,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9632,
+                "Monetary": 11990.96
+            },
+            {
+                "Similar_CustomerID": 18259,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9609,
+                "Monetary": 2338.6
+            },
+            {
+                "Similar_CustomerID": 13868,
+                "SegmentName": "Loyal Customers",
+                "Cosine_Similarity": 0.9577,
+                "Monetary": 3192.54
+            }
+        ],
+        "17340": [
+            {
+                "Similar_CustomerID": 14004,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 4582.64
+            },
+            {
+                "Similar_CustomerID": 14936,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9966,
+                "Monetary": 8137.02
+            },
+            {
+                "Similar_CustomerID": 17203,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 3560.08
+            },
+            {
+                "Similar_CustomerID": 12428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9939,
+                "Monetary": 7956.46
+            },
+            {
+                "Similar_CustomerID": 17416,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9934,
+                "Monetary": 6893.42
+            }
+        ],
+        "12682": [
+            {
+                "Similar_CustomerID": 16133,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9994,
+                "Monetary": 14589.04
+            },
+            {
+                "Similar_CustomerID": 13319,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9993,
+                "Monetary": 10845.55
+            },
+            {
+                "Similar_CustomerID": 13408,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 28117.04
+            },
+            {
+                "Similar_CustomerID": 15144,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9968,
+                "Monetary": 6580.44
+            },
+            {
+                "Similar_CustomerID": 15311,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9945,
+                "Monetary": 60632.75
+            }
+        ],
+        "13113": [
+            {
+                "Similar_CustomerID": 17017,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9972,
+                "Monetary": 8694.26
+            },
+            {
+                "Similar_CustomerID": 16525,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9965,
+                "Monetary": 13027.45
+            },
+            {
+                "Similar_CustomerID": 16191,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9942,
+                "Monetary": 5180.52
+            },
+            {
+                "Similar_CustomerID": 12839,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9941,
+                "Monetary": 5591.42
+            },
+            {
+                "Similar_CustomerID": 13078,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 12627.94
+            }
+        ],
+        "14606": [
+            {
+                "Similar_CustomerID": 14527,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9972,
+                "Monetary": 8507.13
+            },
+            {
+                "Similar_CustomerID": 17811,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9954,
+                "Monetary": 7761.82
+            },
+            {
+                "Similar_CustomerID": 12748,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9946,
+                "Monetary": 33053.19
+            },
+            {
+                "Similar_CustomerID": 12841,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9944,
+                "Monetary": 3991.58
+            },
+            {
+                "Similar_CustomerID": 17315,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9943,
+                "Monetary": 6281.23
+            }
+        ],
+        "12557": [
+            {
+                "Similar_CustomerID": 13941,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9869,
+                "Monetary": 5112.96
+            },
+            {
+                "Similar_CustomerID": 18259,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9741,
+                "Monetary": 2338.6
+            },
+            {
+                "Similar_CustomerID": 18139,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9736,
+                "Monetary": 8438.34
+            },
+            {
+                "Similar_CustomerID": 12830,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9702,
+                "Monetary": 6814.64
+            },
+            {
+                "Similar_CustomerID": 16000,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9632,
+                "Monetary": 12393.7
+            }
+        ],
+        "12939": [
+            {
+                "Similar_CustomerID": 14101,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9869,
+                "Monetary": 5976.79
+            },
+            {
+                "Similar_CustomerID": 17396,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9774,
+                "Monetary": 7330.8
+            },
+            {
+                "Similar_CustomerID": 12931,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9762,
+                "Monetary": 42055.96
+            },
+            {
+                "Similar_CustomerID": 12830,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.972,
+                "Monetary": 6814.64
+            },
+            {
+                "Similar_CustomerID": 16182,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9531,
+                "Monetary": 6617.65
+            }
+        ],
+        "15125": [
+            {
+                "Similar_CustomerID": 14733,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9926,
+                "Monetary": 9585.91
+            },
+            {
+                "Similar_CustomerID": 12709,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9923,
+                "Monetary": 9706.52
+            },
+            {
+                "Similar_CustomerID": 15513,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9919,
+                "Monetary": 14758.22
+            },
+            {
+                "Similar_CustomerID": 13178,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9917,
+                "Monetary": 5725.47
+            },
+            {
+                "Similar_CustomerID": 13327,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9905,
+                "Monetary": 3627.77
+            }
+        ],
+        "14194": [
+            {
+                "Similar_CustomerID": 15856,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9992,
+                "Monetary": 16143.64
+            },
+            {
+                "Similar_CustomerID": 15159,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9982,
+                "Monetary": 18641.01
+            },
+            {
+                "Similar_CustomerID": 15498,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 13316.4
+            },
+            {
+                "Similar_CustomerID": 14895,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 11138.71
+            },
+            {
+                "Similar_CustomerID": 13969,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9965,
+                "Monetary": 9024.17
+            }
+        ],
+        "12971": [
+            {
+                "Similar_CustomerID": 16168,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9914,
+                "Monetary": 3787.6
+            },
+            {
+                "Similar_CustomerID": 14735,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9873,
+                "Monetary": 6065.69
+            },
+            {
+                "Similar_CustomerID": 14180,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.985,
+                "Monetary": 4748.52
+            },
+            {
+                "Similar_CustomerID": 17068,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9749,
+                "Monetary": 4552.14
+            },
+            {
+                "Similar_CustomerID": 13199,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9749,
+                "Monetary": 9817.12
+            }
+        ],
+        "14895": [
+            {
+                "Similar_CustomerID": 14367,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9982,
+                "Monetary": 9227.82
+            },
+            {
+                "Similar_CustomerID": 14194,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 11349.52
+            },
+            {
+                "Similar_CustomerID": 15601,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9976,
+                "Monetary": 6776.56
+            },
+            {
+                "Similar_CustomerID": 15856,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9971,
+                "Monetary": 16143.64
+            },
+            {
+                "Similar_CustomerID": 13969,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9971,
+                "Monetary": 9024.17
+            }
+        ],
+        "12409": [
+            {
+                "Similar_CustomerID": 15321,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9809,
+                "Monetary": 2748.31
+            },
+            {
+                "Similar_CustomerID": 16253,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9768,
+                "Monetary": 3683.86
+            },
+            {
+                "Similar_CustomerID": 12876,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9732,
+                "Monetary": 2218.02
+            },
+            {
+                "Similar_CustomerID": 15980,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.972,
+                "Monetary": 2398.86
+            },
+            {
+                "Similar_CustomerID": 12536,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9718,
+                "Monetary": 12601.83
+            }
+        ],
+        "17581": [
+            {
+                "Similar_CustomerID": 16523,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.998,
+                "Monetary": 9418.47
+            },
+            {
+                "Similar_CustomerID": 16558,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9974,
+                "Monetary": 8338.49
+            },
+            {
+                "Similar_CustomerID": 16779,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9973,
+                "Monetary": 10611.72
+            },
+            {
+                "Similar_CustomerID": 17428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9953,
+                "Monetary": 17256.85
+            },
+            {
+                "Similar_CustomerID": 17730,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9951,
+                "Monetary": 5298.48
+            }
+        ],
+        "15482": [
+            {
+                "Similar_CustomerID": 14607,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9972,
+                "Monetary": 16209.5
+            },
+            {
+                "Similar_CustomerID": 15838,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 33643.08
+            },
+            {
+                "Similar_CustomerID": 14062,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 10464.85
+            },
+            {
+                "Similar_CustomerID": 14866,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9904,
+                "Monetary": 14389.9
+            },
+            {
+                "Similar_CustomerID": 13629,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9875,
+                "Monetary": 7792.36
+            }
+        ],
+        "13319": [
+            {
+                "Similar_CustomerID": 16133,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9994,
+                "Monetary": 14589.04
+            },
+            {
+                "Similar_CustomerID": 12682,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9993,
+                "Monetary": 12279.82
+            },
+            {
+                "Similar_CustomerID": 15144,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.998,
+                "Monetary": 6580.44
+            },
+            {
+                "Similar_CustomerID": 15046,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9954,
+                "Monetary": 5090.42
+            },
+            {
+                "Similar_CustomerID": 15498,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9952,
+                "Monetary": 13316.4
+            }
+        ],
+        "17107": [
+            {
+                "Similar_CustomerID": 16258,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9944,
+                "Monetary": 5203.51
+            },
+            {
+                "Similar_CustomerID": 12432,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9944,
+                "Monetary": 5059.32
+            },
+            {
+                "Similar_CustomerID": 18079,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9941,
+                "Monetary": 3613.15
+            },
+            {
+                "Similar_CustomerID": 12477,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9924,
+                "Monetary": 13219.74
+            },
+            {
+                "Similar_CustomerID": 14842,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9915,
+                "Monetary": 2824.69
+            }
+        ],
+        "13340": [
+            {
+                "Similar_CustomerID": 12432,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9961,
+                "Monetary": 5059.32
+            },
+            {
+                "Similar_CustomerID": 16258,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.996,
+                "Monetary": 5203.51
+            },
+            {
+                "Similar_CustomerID": 15505,
+                "SegmentName": "At-Risk Customers",
+                "Cosine_Similarity": 0.9944,
+                "Monetary": 3610.96
+            },
+            {
+                "Similar_CustomerID": 12415,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9938,
+                "Monetary": 124914.53
+            },
+            {
+                "Similar_CustomerID": 12744,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9937,
+                "Monetary": 21279.29
+            }
+        ],
+        "17139": [
+            {
+                "Similar_CustomerID": 12626,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9973,
+                "Monetary": 6620.48
+            },
+            {
+                "Similar_CustomerID": 12705,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9972,
+                "Monetary": 6868.29
+            },
+            {
+                "Similar_CustomerID": 13488,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.996,
+                "Monetary": 8968.31
+            },
+            {
+                "Similar_CustomerID": 12567,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9959,
+                "Monetary": 9401.28
+            },
+            {
+                "Similar_CustomerID": 12428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9941,
+                "Monetary": 7956.46
+            }
+        ],
+        "16779": [
+            {
+                "Similar_CustomerID": 16523,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9997,
+                "Monetary": 9418.47
+            },
+            {
+                "Similar_CustomerID": 17428,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9978,
+                "Monetary": 17256.85
+            },
+            {
+                "Similar_CustomerID": 17677,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9977,
+                "Monetary": 16345.38
+            },
+            {
+                "Similar_CustomerID": 13985,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9976,
+                "Monetary": 7060.13
+            },
+            {
+                "Similar_CustomerID": 17675,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9974,
+                "Monetary": 20374.28
+            }
+        ],
+        "17865": [
+            {
+                "Similar_CustomerID": 16187,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9986,
+                "Monetary": 6911.44
+            },
+            {
+                "Similar_CustomerID": 12431,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9975,
+                "Monetary": 6419.95
+            },
+            {
+                "Similar_CustomerID": 18226,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9947,
+                "Monetary": 5228.05
+            },
+            {
+                "Similar_CustomerID": 13871,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9933,
+                "Monetary": 6403.25
+            },
+            {
+                "Similar_CustomerID": 14944,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9925,
+                "Monetary": 5900.25
+            }
+        ],
+        "17706": [
+            {
+                "Similar_CustomerID": 17735,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9985,
+                "Monetary": 13110.02
+            },
+            {
+                "Similar_CustomerID": 12621,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9976,
+                "Monetary": 13689.67
+            },
+            {
+                "Similar_CustomerID": 12683,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9974,
+                "Monetary": 8476.57
+            },
+            {
+                "Similar_CustomerID": 14194,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9964,
+                "Monetary": 11349.52
+            },
+            {
+                "Similar_CustomerID": 15159,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9961,
+                "Monetary": 18641.01
+            }
+        ],
+        "15251": [
+            {
+                "Similar_CustomerID": 14062,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9922,
+                "Monetary": 10464.85
+            },
+            {
+                "Similar_CustomerID": 14733,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9919,
+                "Monetary": 9585.91
+            },
+            {
+                "Similar_CustomerID": 17404,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9908,
+                "Monetary": 31906.82
+            },
+            {
+                "Similar_CustomerID": 14031,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9902,
+                "Monetary": 17286.86
+            },
+            {
+                "Similar_CustomerID": 16684,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9896,
+                "Monetary": 66653.56
+            }
+        ],
+        "14062": [
+            {
+                "Similar_CustomerID": 15482,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9935,
+                "Monetary": 10879.76
+            },
+            {
+                "Similar_CustomerID": 15251,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9922,
+                "Monetary": 10484.99
+            },
+            {
+                "Similar_CustomerID": 16684,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9905,
+                "Monetary": 66653.56
+            },
+            {
+                "Similar_CustomerID": 13881,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9893,
+                "Monetary": 17159.52
+            },
+            {
+                "Similar_CustomerID": 14031,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9885,
+                "Monetary": 17286.86
+            }
+        ],
+        "14769": [
+            {
+                "Similar_CustomerID": 17686,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9886,
+                "Monetary": 5739.46
+            },
+            {
+                "Similar_CustomerID": 16440,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.988,
+                "Monetary": 3640.67
+            },
+            {
+                "Similar_CustomerID": 12714,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9879,
+                "Monetary": 4708.86
+            },
+            {
+                "Similar_CustomerID": 17426,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9872,
+                "Monetary": 5037.26
+            },
+            {
+                "Similar_CustomerID": 14146,
+                "SegmentName": "Champions",
+                "Cosine_Similarity": 0.9868,
+                "Monetary": 4191.0
+            }
+        ]
+    }
+}

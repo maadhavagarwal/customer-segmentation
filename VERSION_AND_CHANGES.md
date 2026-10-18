@@ -1,8 +1,26 @@
 # Version & Changes Log
 
-This document tracks all major iterations, feature additions, and fixes made to the Customer Segmentation & Analytics project.
+This document tracks all major iterations, feature additions, and fixes made to the Customer Segmentation & Multi-Model AI/ML Analytics project.
 
-## [v1.3.0] - High-Precision Calibrated Inference, Churn Modeling, CLV & 8-Tab Enterprise Dashboard
+## [v1.4.0] - Multi-Model AI/ML Suite, Supervised Churn & CLV, XAI Counterfactuals & Isolation Forest
+**Date**: October 18, 2026
+
+### Added
+- **Multi-Algorithm Clustering Benchmark (`src/ml_models.py`)**: Benchmarked K-Means ($K=4$) against **Gaussian Mixture Models (EM)** and **Agglomerative Hierarchical Clustering (Ward)** across 3 mathematical cluster validation metrics:
+  - **Silhouette Coefficient**: K-Means (`0.3373`) vs Agglomerative (`0.2800`) vs GMM (`0.1761`).
+  - **Davies-Bouldin Index**: K-Means (`1.0106`) vs Agglomerative (`1.0992`) vs GMM (`1.7048`).
+  - **Calinski-Harabasz Score**: K-Means (`3,328.92`) vs Agglomerative (`2,739.57`) vs GMM (`2,170.60`).
+- **Supervised Customer Churn Classifier (`src/ml_models.py`, `models/rf_churn_model.pkl`)**: Trained a 120-tree **Random Forest Classifier** using a 75%/25% temporal observation/holdout split (`ROC-AUC = 0.7490`), outputting ROC curves, Confusion Matrix, Precision, Recall, F1-Score, and Gini Feature Importances.
+- **Supervised 12-Month CLV Regressor (`src/ml_models.py`, `models/gbr_clv_model.pkl`)**: Trained a 120-estimator **Gradient Boosting Regressor** (`gbr_clv_model.pkl`) to predict customer lifetime value from behavioral features, reporting $R^2$, MAE, RMSE, feature importances, and Actual vs. Predicted log-scatter plots.
+- **Unsupervised Anomaly Detection (`src/ml_models.py`, `models/isolation_forest.pkl`)**: Implemented a 100-tree **Isolation Forest** (5% contamination rate) isolating 217 anomalous B2B wholesale/outlier customer profiles from 4,121 normal retail buyers.
+- **Local Explainable AI (XAI) & Counterfactual Boundary Solver (`src/inference.py`)**:
+  - Decomposes squared Euclidean centroid distance into per-feature percentage penalties across `Recency`, `Frequency`, and `Monetary` z-scores.
+  - Solves for the exact minimum counterfactual $\Delta \text{Frequency}$ (orders) and $\Delta \text{Monetary}$ (spend) needed to cross the K-Means decision hyperplane into the **Champions** cluster.
+- **Customer Collaborative Filtering (`src/ml_models.py`, `app/app.py`)**: Built a 6D behavioral **Cosine Similarity Lookalike Engine** to find the top 5 mathematically closest peer customers for any target `CustomerID`.
+- **9-Tab Streamlit Dashboard (`app/app.py`)**: Added **Tab 6 (AI/ML Model Benchmarks & Lab)** and upgraded **Tab 5 (Segment Predictor & XAI)** and **Tab 7 (Customer Lookup & Similarity)**.
+
+
+## [v1.3.0] - High-Precision Calibrated Inference, Churn Modeling, CLV & Enterprise Dashboard
 **Date**: August 31, 2026
 
 ### Added
@@ -11,16 +29,8 @@ This document tracks all major iterations, feature additions, and fixes made to 
   - **Predictive Churn Risk (%)**: Exponential Recency decay model $P(\text{Churn}) = (1 - e^{-R/90}) \times 100\%$.
   - **12-Month Projected CLV ($)**: Forward 12-month spend projection based on Average Order Value, annualized order velocity, and retention probability.
   - **Customer Engagement Index (0–100)**: Composite health score combining Recency decay and logarithmic Frequency boost.
-  - **Customer Persona Classification**: Automated assignment of behavioral personas (*Wholesale Bulk Buyer*, *Dormant High-Value Customer*, *Active High-Pace Customer*, *At-Risk Low-Value Customer*, *Promising New Customer*, *Standard Core Customer*).
+  - **Customer Persona Classification**: Automated assignment of behavioral personas.
   - **RFM Quintile & Composite Scoring**: Added `R_Score`, `F_Score`, `M_Score` (1–5) and composite string (`555` to `111`).
-- **Expanded 8-Tab Streamlit Dashboard (`app/app.py`)**:
-  - Expanded Tab 1 to a **12-Metric Macro KPI Dashboard** plus 4 interactive charts (Cohort Sizes, Revenue Share, AOV Comparison, Monetary Spend Log Boxplot).
-  - Added **Optimal K Evaluation (Elbow & Silhouette)** and **Raw RFM Distributions** plots to Tab 2 alongside 2D PCA and Centroid Radar charts.
-  - Added **Hourly Orders vs Revenue Dual-Axis Chart** to Tab 3.
-  - Added **Interactive Item-to-Item Cross-Sell Recommender** and **Market Basket Rule Affinity Scatter Plot** to Tab 4.
-  - Added **Portfolio Churn Risk Histogram** and full customer indicator lookup to Tab 6.
-  - Added **Tab 7 (System Methodology & Viva Guide)** with LaTeX equations and Q&A accordions, and **Tab 8 (Project Documentation & Manual)** with live markdown rendering and download buttons.
-  - Added 3–4 line analytical explanations below every chart and removed all emojis for a clean, formal enterprise UI.
 - **Complete Operational Manual (`PROCEDURE_AND_GUIDE.md`)**: Created comprehensive step-by-step execution guide, mathematical proofs, viva FAQ, and 5-phase future project roadmap.
 
 ### Fixed
@@ -44,15 +54,11 @@ This document tracks all major iterations, feature additions, and fixes made to 
 
 ### Added
 - **Project Restructure**: Created a dedicated `models/` directory for `.pkl` files and `model_metadata.json` to keep output cleaner.
-- **Explainable Inference Engine (`src/inference.py`)**: Built a robust inference function that strictly enforces the same data transformations used during training. It calculates and displays the Euclidean distance from the new customer's transformed RFM values to all K-Means centroids, providing mathematical transparency on *why* a customer was grouped into a specific segment.
-- **Detailed Segment Analysis**: Updated `src/evaluation.py` to calculate Median Recency, Median Frequency, and Median Monetary, as well as `AverageOrderValue` for each cluster. Segments are assigned strictly via deterministic median ranking rather than arbitrary labeling.
-- **K-Value Justification**: Computed and logged Inertia and Silhouette scores for K=2 through K=10. Maintained K=4 due to a local peak in silhouette score combined with the business necessity for granular cohorts.
-- **Jupyter Notebook Rewrite**: Restructured `notebooks/customer_segmentation.ipynb` into a Viva-ready format detailing the problem statement, algorithm logic, distance metrics, and visualization rationale.
-- **Unit Testing**: Implemented `tests/test_pipeline.py` to mathematically verify non-negative RFM outputs, proper duplicate handling, and inference integrity.
-
-### Fixed
-- Fixed an issue where the Streamlit UI could cache `None` if models weren't yet fully written to disk.
-- Fixed visualization scripts to correctly map updated columns from `evaluation.py`.
+- **Explainable Inference Engine (`src/inference.py`)**: Built a robust inference function that strictly enforces the same data transformations used during training.
+- **Detailed Segment Analysis**: Updated `src/evaluation.py` to calculate Median Recency, Median Frequency, and Median Monetary, as well as `AverageOrderValue` for each cluster.
+- **K-Value Justification**: Computed and logged Inertia and Silhouette scores for K=2 through K=10.
+- **Jupyter Notebook Rewrite**: Restructured `notebooks/customer_segmentation.ipynb` into a Viva-ready format.
+- **Unit Testing**: Implemented `tests/test_pipeline.py`.
 
 
 ## [v1.0.0] - Initial Release
@@ -61,11 +67,5 @@ This document tracks all major iterations, feature additions, and fixes made to 
 ### Added
 - **Data Preprocessing Pipeline**: Built `src/preprocessing.py` to handle missing `CustomerID` fields, duplicate rows, cancelled invoices, and invalid quantities in the `Online Retail.xlsx` dataset.
 - **RFM Feature Engineering**: Developed `src/feature_engineering.py` to aggregate transactional data into customer-level Recency, Frequency, and Monetary (RFM) features, plus Average Order Value.
-- **Clustering Logic**: Created `src/clustering.py` using `scikit-learn` to apply `Log1p` transformations and `StandardScaler`. Tested K=2 through K=10 using WCSS/Inertia and Silhouette Scores, standardizing on **K=4**.
-- **Model Evaluation**: Implemented dynamic logic in `src/evaluation.py` to mathematically interpret cluster centroids and assign human-readable names (Champions, Loyal Customers, At-Risk, Lost Customers).
-- **Academic Walkthrough**: Generated a comprehensive Jupyter Notebook (`customer_segmentation.ipynb`) detailing the end-to-end Machine Learning methodology suitable for viva/demonstration.
-- **Interactive Dashboard**: Designed and deployed a `Streamlit` application in `app/app.py`.
-- **Documentation**: Root `README.md` and `VERSION_AND_CHANGES.md` tracker created.
-
-### Fixed
-- Fixed an initial Streamlit path-resolution bug by utilizing `os.path.dirname(__file__)` to guarantee the app correctly reads the `.pkl` and `.csv` artifacts regardless of the working directory it is launched from.
+- **Clustering Logic**: Created `src/clustering.py` using `scikit-learn` to apply `Log1p` transformations and `StandardScaler`.
+- **Model Evaluation**: Implemented dynamic logic in `src/evaluation.py` to mathematically interpret cluster centroids and assign human-readable names.

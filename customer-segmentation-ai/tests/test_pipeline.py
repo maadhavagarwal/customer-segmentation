@@ -11,6 +11,7 @@ from clustering import preprocess_for_clustering
 from inference import predict_new_customer, classify_micro_persona
 from analytics import analyze_temporal_sales
 from recommendations import get_personalized_recommendation_strategy
+from ml_models import benchmark_clustering_algorithms
 
 class TestPipeline(unittest.TestCase):
     def setUp(self):
@@ -53,14 +54,34 @@ class TestPipeline(unittest.TestCase):
         persona = classify_micro_persona(recency=5, frequency=10, monetary=4500.0, aov=450.0)
         self.assertEqual(persona, "Wholesale Bulk Buyer")
 
-    def test_high_confidence_inference(self):
+    def test_high_confidence_inference_and_xai(self):
         model_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'models'))
         if os.path.exists(os.path.join(model_dir, 'kmeans_model.pkl')):
             c_id, dists, probs, scaled, ai_metrics = predict_new_customer(5, 15, 4500.0, model_dir=model_dir)
             top_prob = probs[c_id] * 100.0
             self.assertGreaterEqual(top_prob, 80.0)
             self.assertIn('churn_risk_pct', ai_metrics)
+            self.assertIn('ml_churn_prob_pct', ai_metrics)
             self.assertIn('projected_clv', ai_metrics)
+            self.assertIn('ml_predicted_clv', ai_metrics)
+            self.assertIn('feature_attributions', ai_metrics)
+            self.assertIn('counterfactual', ai_metrics)
+
+            # Test non-Champion counterfactual generation
+            _, _, _, _, risk_metrics = predict_new_customer(85, 2, 250.0, model_dir=model_dir)
+            self.assertFalse(risk_metrics['counterfactual']['already_champion'])
+            self.assertGreater(risk_metrics['counterfactual']['needed_orders_delta'], 0)
+
+    def test_clustering_benchmark(self):
+        synth_df = pd.DataFrame(
+            np.random.RandomState(42).randn(60, 3),
+            columns=['Recency_scaled', 'Frequency_scaled', 'Monetary_scaled']
+        )
+        res = benchmark_clustering_algorithms(synth_df, k=3)
+        self.assertEqual(len(res), 3)
+        self.assertIn('Silhouette_Score', res[0])
+        self.assertIn('Davies_Bouldin_Index', res[0])
+        self.assertIn('Calinski_Harabasz_Score', res[0])
 
 if __name__ == '__main__':
     unittest.main()
